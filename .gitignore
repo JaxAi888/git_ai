@@ -1,0 +1,14 @@
+# Hugo 构建产物
+/public/
+/resources/_gen/
+/.hugo_build.lock
+
+# 主题（由 CI 自动 clone，不纳入版本控制）
+/themes/blowfish/
+
+# Go module（本项目改用 git clone 装主题，未启用 Hugo Modules）
+/go.mod
+/go.sum
+
+# 系统文件
+.DS_Store

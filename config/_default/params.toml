@@ -1,0 +1,88 @@
+# -- 主题参数 --
+# Blowfish 文档：https://blowfish.page/docs/configuration/#theme-parameters
+
+colorScheme = "blowfish"
+defaultAppearance = "light"      # light 或 dark
+autoSwitchAppearance = true       # 跟随系统自动切换深色/浅色
+
+enableA11y = true
+enableSearch = true               # 站内搜索
+enableCodeCopy = true             # 代码块一键复制
+enableStructuredBreadcrumbs = true
+
+replyByEmail = false
+
+disableImageOptimization = false
+disableTextInHeader = false
+
+hotlinkFeatureImage = false
+
+fingerprintAlgorithm = "sha512"
+
+[header]
+  layout = "fixed-fill-blur"       # 顶部导航固定 + 毛玻璃
+
+[footer]
+  showMenu = true
+  showCopyright = true
+  showThemeAttribution = true
+  showAppearanceSwitcher = true
+  showScrollToTop = true
+
+[homepage]
+  layout = "profile"               # 首页个人门户样式
+  showRecent = true                # 显示最近文章
+  showRecentItems = 6
+  showMoreLink = true
+  showMoreLinkDest = "posts"
+  cardView = true                  # 最近文章以卡片展示
+  cardViewScreenWidth = false
+  layoutBackgroundBlur = false
+  disableHeroImageFilter = false
+
+[article]
+  showDate = true
+  showDateUpdated = true
+  showAuthor = true
+  showHero = false
+  showBreadcrumbs = true
+  showDraftLabel = true
+  showEdit = false
+  seriesOpened = true
+  showHeadingAnchors = true
+  showPagination = true
+  showReadingTime = true
+  showReadingProgress = true
+  showTableOfContents = true       # 文章内目录（适合长笔记）
+  showTaxonomies = true
+  showCategories = true
+  showTags = true
+  showWordCount = true
+  showZenMode = true
+
+[list]
+  showHero = false
+  showBreadcrumbs = true
+  showSummary = true               # 列表显示摘要
+  showTableOfContents = true       # 知识库章节侧边目录
+  showCards = false
+  orderByWeight = true             # 知识库按 weight 排序（结构化）
+  groupByYear = false
+  constrainItemsWidth = false
+
+[sitemap]
+  excludedKinds = ["taxonomy", "term"]
+
+[taxonomy]
+  showTermCount = true
+  showHero = false
+  showBreadcrumbs = true
+  showTableOfContents = false
+  cardView = false
+
+[term]
+  showHero = false
+  showBreadcrumbs = true
+  showTableOfContents = true
+  groupByYear = false
+  cardView = false

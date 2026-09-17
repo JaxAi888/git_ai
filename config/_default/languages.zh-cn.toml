@@ -1,0 +1,24 @@
+disabled = false
+locale = "zh-cn"
+label = "简体中文"
+weight = 1
+title = "AI 学习笔记"
+
+[params]
+  displayName = "中文"
+  isoCode = "zh-cn"
+  rtl = false
+  dateFormat = "2006年1月2日"
+  description = "记录我的 AI 学习之路：机器学习、深度学习、大模型与 Agent 的图文笔记与实践。"
+  # logo = "img/logo.png"
+  # copyright = "© 2026 AI 学习笔记"
+
+[params.author]
+  name = "JaxAi"
+  # email = "youremail@example.com"
+  # image = "img/author.jpg"  # 放一张头像到 assets/img/author.jpg 后取消注释
+  headline = "在 AI 的世界里持续学习"
+  bio = "记录机器学习、深度学习、大模型与 Agent 的学习笔记。"
+  links = [
+    { github = "https://github.com/JaxAi888" },
+  ]
