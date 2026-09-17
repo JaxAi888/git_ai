@@ -9,10 +9,12 @@ cascade:
 
 ## 学习路线
 
-```goat
-  机器学习基础  →  深度学习  →  大语言模型 LLM  →  Agent / RAG
-     入门            进阶           核心              应用
-```
+{{< mermaid >}}
+flowchart LR
+    A["机器学习基础<br/>入门"] --> B["深度学习<br/>进阶"]
+    B --> C["大语言模型 LLM<br/>核心"]
+    C --> D["Agent / RAG<br/>应用"]
+{{< /mermaid >}}
 
 ## 四大板块
 
