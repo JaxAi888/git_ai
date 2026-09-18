@@ -100,9 +100,9 @@ ul { list-style: none; }
   display: grid;
   grid-template-columns: 256px minmax(0, 1fr);
   gap: 32px;
-  max-width: 1140px;
+  max-width: 1320px;
   margin: 0 auto;
-  padding: 32px 24px 72px;
+  padding: 32px 32px 72px;
   align-items: start;
 }
 .sidebar { position: sticky; top: 24px; }
@@ -690,7 +690,7 @@ ul { list-style: none; }
    12. 页脚
    -------------------------------------------------------------------------- */
 .site-foot {
-  max-width: 1140px; margin: 0 auto; padding: 26px 24px 40px;
+  max-width: 1320px; margin: 0 auto; padding: 26px 32px 40px;
   border-top: 1px solid var(--c-border);
   display: flex; align-items: center; justify-content: space-between;
   gap: 14px; flex-wrap: wrap; font-size: 12.5px; color: var(--c-text-3);
@@ -743,7 +743,10 @@ html { scroll-behavior: smooth; }
 /* --------------------------------------------------------------------------
    15. 文章详情页：双栏（正文 + 粘性目录）
    -------------------------------------------------------------------------- */
-.post-layout { display: grid; grid-template-columns: minmax(0, 1fr) 208px; gap: 24px; align-items: start; }
+.post-layout { display: grid; grid-template-columns: minmax(0, 1fr); gap: 28px; align-items: start; }
+@media (min-width: 1280px) {
+  .post-layout { grid-template-columns: minmax(0, 1fr) 220px; }
+}
 .toc-card { position: sticky; top: 22px; }
 .toc-eyebrow {
   font-family: var(--font-mono); font-size: 11px; font-weight: 700;
@@ -764,7 +767,7 @@ html { scroll-behavior: smooth; }
 }
 
 /* 文章头部 */
-.art-head { padding: 24px 26px 0; }
+.art-head { padding: 28px 40px 0; }
 .back-link {
   display: inline-flex; align-items: center; gap: 6px;
   font-size: 12px; font-weight: 600; color: var(--c-text-3);
@@ -772,7 +775,7 @@ html { scroll-behavior: smooth; }
 }
 .back-link:hover { color: var(--c-primary-600); }
 .art-title {
-  font-size: clamp(22px, 3vw, 29px); font-weight: 800;
+  font-size: clamp(24px, 3.2vw, 34px); font-weight: 800;
   letter-spacing: -.02em; line-height: 1.35; color: var(--c-text);
 }
 .art-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-top: 12px; }
@@ -781,10 +784,10 @@ html { scroll-behavior: smooth; }
   font-size: 12px; color: var(--c-text-3);
 }
 .art-meta .m b { font-weight: 600; color: var(--c-text-2); }
-.art-cover { height: 168px; margin: 18px 26px 0; box-shadow: none; border-radius: 14px; }
+.art-cover { height: 200px; margin: 20px 40px 0; box-shadow: none; border-radius: 14px; }
 
 /* 正文排版 */
-.article-body { padding: 22px 26px 26px; font-size: 14.5px; color: var(--c-text-2); line-height: 1.9; }
+.article-body { padding: 24px 40px 36px; font-size: 16px; color: var(--c-text-2); line-height: 1.9; }
 .article-body p { margin: 14px 0; }
 .article-body h2 {
   font-size: 19px; font-weight: 700; color: var(--c-text);
@@ -869,14 +872,14 @@ html { scroll-behavior: smooth; }
 .pn-card.next { text-align: right; }
 .pn-card.next h4 { color: var(--c-primary-600); }
 
-@media (max-width: 1240px) {
-  .post-layout { grid-template-columns: 1fr; }
+@media (max-width: 1279px) {
   .toc-card { display: none; }
 }
 @media (max-width: 620px) {
+  .layout { padding: 20px 16px 56px; }
   .art-head { padding: 20px 16px 0; }
-  .art-cover { margin: 14px 16px 0; }
-  .article-body { padding: 18px 16px 20px; }
+  .art-cover { margin: 14px 16px 0; height: 140px; }
+  .article-body { padding: 18px 16px 20px; font-size: 15.5px; }
   .pn-grid { grid-template-columns: 1fr; }
   .pn-card.next { text-align: left; }
 }
