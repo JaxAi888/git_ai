@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+<script>
+(function(){try{var t=localStorage.getItem('jax-ai-theme');if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t);}catch(e){}})();
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Agent智能体 · Jax的AI知识库</title>
+<meta name="description" content="Agent 开发学习路线与资料沉淀：从 LLM 基础到多 Agent 协作的五阶段路线">
+<meta property="og:title" content="Agent智能体 · Jax的AI知识库">
+<meta property="og:description" content="Agent 开发学习路线与资料沉淀：从 LLM 基础到多 Agent 协作的五阶段路线">
+<meta name="theme-color" content="#0b1026">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Jax的AI知识库">
+<meta property="og:image" content="assets/galaxy-cover.jpg">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/galaxy-cover.jpg">
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+<a class="skip-link" href="#main">跳到主要内容</a>
+
+<div class="layout">
+
+  <!-- ================= 侧栏 ================= -->
+  <aside class="sidebar">
+    <div class="side-card">
+      <div class="brand">
+        <span class="avatar">AI</span>
+        <span class="brand-name">Jax的AI知识库</span>
+        <button class="theme-btn" data-theme-toggle aria-label="切换深浅主题">🌙</button>
+      </div>
+      <nav class="nav">
+        <a href="index.html"><span class="ico">🏠</span>首页</a>
+        <a href="agents.html" class="active"><span class="ico">🤖</span>Agent智能体</a>
+        <a href="articles.html"><span class="ico">📄</span>技术文章<span class="cnt">78</span></a>
+        <a href="projects.html"><span class="ico">🚀</span>大模型应用开发项目</a>
+        <a href="interview.html"><span class="ico">🎯</span>AI 面试题<span class="cnt">120</span></a>
+        <a href="about.html"><span class="ico">👋</span>关于Jax</a>
+      </nav>
+      <div class="side-search">
+        <span class="s-ico">🔍</span>
+        <label for="sideSearch" class="sr-only">搜索</label>
+        <input id="sideSearch" type="search" placeholder="搜索资料…">
+      </div>
+      <div class="side-divider"></div>
+      <div class="side-title">本页目录</div>
+      <ul class="info-list">
+        <li><span class="ico">🗺️</span><a href="#roadmap">五阶段学习路线</a></li>
+        <li><span class="ico">📚</span><a href="#resources">资料沉淀</a></li>
+        <li><span class="ico">⚖️</span><a href="#compare">框架选型</a></li>
+      </ul>
+      <div class="side-divider"></div>
+      <div class="side-title">关于博主</div>
+      <ul class="info-list">
+        <li><span class="ico">📍</span>深圳 · AI 应用工程师</li>
+        <li><span class="ico">⭐</span>大模型落地实践 3 年</li>
+        <li><span class="ico">📮</span>hi@jax-ai.dev</li>
+      </ul>
+    </div>
+  </aside>
+
+  <!-- ================= 主内容 ================= -->
+  <main class="main" id="main">
+
+    <!-- 页头 -->
+    <section class="page-hero">
+      <span class="eyebrow">🤖 Agent Track</span>
+      <h1>Agent 智能体</h1>
+      <p>这里放 Agent 开发的完整学习路线与资料沉淀：从 LLM 基础认知，到工具调用、单 Agent 实战、多 Agent 协作，最后到生产化与评测。按阶段推进，每一阶段都有明确产出物。</p>
+      <div class="hero-stats">
+        <div><b>5</b><span>学习阶段</span></div>
+        <div><b>40+</b><span>精选资料</span></div>
+        <div><b>8</b><span>实战项目</span></div>
+        <div><b>持续</b><span>更新中</span></div>
+      </div>
+    </section>
+
+    <!-- 学习路线 -->
+    <div class="sec-head" id="roadmap">
+      <h2>🗺️ 五阶段学习路线</h2>
+      <a href="#resources">跳到资料 →</a>
+    </div>
+
+    <section class="roadmap">
+
+      <!-- 阶段一 -->
+      <article class="card card-hover phase">
+        <div class="phase-num">01</div>
+        <div>
+          <div class="phase-head">
+            <h3>基础认知：理解 LLM 的能力边界</h3>
+            <span class="pill pill-primary">入门</span>
+            <span class="phase-meta">1–2 周</span>
+          </div>
+          <p class="phase-goal">目标：搞清楚「Agent = LLM + 记忆 + 工具 + 规划」，知道模型能做什么、不能做什么。</p>
+          <div class="phase-cols">
+            <div class="phase-col">
+              <h4>关键知识点</h4>
+              <ul class="check-list">
+                <li>Token / 上下文窗口 / 采样参数的实际影响</li>
+                <li>Prompt 基础：角色设定、少样本、思维链</li>
+                <li>为什么需要 Agent：从补全到自主决策</li>
+                <li>幻觉与不确定性的成因</li>
+              </ul>
+            </div>
+            <div class="phase-col">
+              <h4>推荐资料</h4>
+              <ul class="link-list">
+                <li><a href="https://www.youtube.com/watch?v=zjkBMFhNj_g" target="_blank" rel="noopener">Intro to Large Language Models <span class="src">视频</span></a></li>
+                <li><a href="https://platform.openai.com/docs/guides/prompt-engineering" target="_blank" rel="noopener">OpenAI Prompt Engineering Guide <span class="src">文档</span></a></li>
+                <li><a href="https://lilianweng.github.io/posts/2023-06-23-agent/" target="_blank" rel="noopener">LLM Powered Autonomous Agents <span class="src">博客</span></a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- 阶段二 -->
+      <article class="card card-hover phase">
+        <div class="phase-num">02</div>
+        <div>
+          <div class="phase-head">
+            <h3>工具调用：让模型能动手</h3>
+            <span class="pill pill-info">核心</span>
+            <span class="phase-meta">2–3 周</span>
+          </div>
+          <p class="phase-goal">目标：独立实现一套稳定的工具调用链路，能处理参数校验、超时与失败重试。</p>
+          <div class="phase-cols">
+            <div class="phase-col">
+              <h4>关键知识点</h4>
+              <ul class="check-list">
+                <li>Function Calling 的参数设计与 JSON Schema 约束</li>
+                <li>MCP 协议：工具如何标准化接入</li>
+                <li>幂等设计、超时控制、错误回传</li>
+                <li>结构化输出的可靠提取</li>
+              </ul>
+            </div>
+            <div class="phase-col">
+              <h4>推荐资料</h4>
+              <ul class="link-list">
+                <li><a href="https://platform.openai.com/docs/guides/function-calling" target="_blank" rel="noopener">Function Calling 官方指南 <span class="src">文档</span></a></li>
+                <li><a href="https://modelcontextprotocol.io" target="_blank" rel="noopener">MCP 协议规范 <span class="src">规范</span></a></li>
+                <li><a href="articles.html">Function Calling 的十八个坑 <span class="src">本站</span></a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- 阶段三 -->
+      <article class="card card-hover phase">
+        <div class="phase-num">03</div>
+        <div>
+          <div class="phase-head">
+            <h3>单 Agent 实战：跑通第一个闭环</h3>
+            <span class="pill pill-info">核心</span>
+            <span class="phase-meta">3–4 周</span>
+          </div>
+          <p class="phase-goal">目标：用框架搭出一个能查资料、调工具、给结论的 Agent，并配上调试与观测。</p>
+          <div class="phase-cols">
+            <div class="phase-col">
+              <h4>关键知识点</h4>
+              <ul class="check-list">
+                <li>ReAct 循环：思考 → 行动 → 观察</li>
+                <li>记忆设计：短期对话 vs 长期知识</li>
+                <li>接入 RAG 让 Agent 掌握私有知识</li>
+                <li>LangGraph / LlamaIndex 状态机建模</li>
+              </ul>
+            </div>
+            <div class="phase-col">
+              <h4>推荐资料</h4>
+              <ul class="link-list">
+                <li><a href="https://arxiv.org/abs/2210.03629" target="_blank" rel="noopener">ReAct: Synergizing Reasoning and Acting <span class="src">论文</span></a></li>
+                <li><a href="https://langchain-ai.github.io/langgraph/" target="_blank" rel="noopener">LangGraph 官方文档 <span class="src">文档</span></a></li>
+                <li><a href="projects.html">AgentFlow 项目源码 <span class="src">本站</span></a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- 阶段四 -->
+      <article class="card card-hover phase">
+        <div class="phase-num">04</div>
+        <div>
+          <div class="phase-head">
+            <h3>多 Agent 协作：分工与编排</h3>
+            <span class="pill pill-warning">进阶</span>
+            <span class="phase-meta">约 4 周</span>
+          </div>
+          <p class="phase-goal">目标：理解角色分工模式，能设计多角色协作流程并处理失败恢复。</p>
+          <div class="phase-cols">
+            <div class="phase-col">
+              <h4>关键知识点</h4>
+              <ul class="check-list">
+                <li>Planner-Executor-Critic 等经典模式</li>
+                <li>任务分解、路由与结果聚合</li>
+                <li>上下文共享与状态一致性</li>
+                <li>循环控制、预算控制与兜底</li>
+              </ul>
+            </div>
+            <div class="phase-col">
+              <h4>推荐资料</h4>
+              <ul class="link-list">
+                <li><a href="https://www.anthropic.com/engineering/building-effective-agents" target="_blank" rel="noopener">Building Effective Agents <span class="src">指南</span></a></li>
+                <li><a href="https://github.com/microsoft/autogen" target="_blank" rel="noopener">AutoGen / CrewAI <span class="src">框架</span></a></li>
+                <li><a href="articles.html">多 Agent 协作系统实战 <span class="src">本站</span></a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- 阶段五 -->
+      <article class="card card-hover phase">
+        <div class="phase-num">05</div>
+        <div>
+          <div class="phase-head">
+            <h3>生产化与评测：从能跑到好用</h3>
+            <span class="pill pill-success">高阶</span>
+            <span class="phase-meta">持续</span>
+          </div>
+          <p class="phase-goal">目标：让 Agent 在真实流量下稳定、可控、可衡量地工作。</p>
+          <div class="phase-cols">
+            <div class="phase-col">
+              <h4>关键知识点</h4>
+              <ul class="check-list">
+                <li>成本与延迟优化：缓存、分级模型、并行</li>
+                <li>可观测性：Token 级追踪与调用链</li>
+                <li>安全护栏：注入防护、权限最小化</li>
+                <li>离线评测集与回归测试</li>
+              </ul>
+            </div>
+            <div class="phase-col">
+              <h4>推荐资料</h4>
+              <ul class="link-list">
+                <li><a href="https://github.com/explodinggradients/ragas" target="_blank" rel="noopener">RAGAS / AgentBench <span class="src">评测</span></a></li>
+                <li><a href="https://opentelemetry.io/docs/specs/semconv/gen-ai/" target="_blank" rel="noopener">OpenTelemetry GenAI 语义约定 <span class="src">规范</span></a></li>
+                <li><a href="articles.html">LLM 应用可观测性实践 <span class="src">本站</span></a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </article>
+
+    </section>
+
+    <!-- 资料沉淀 -->
+    <div class="sec-head" id="resources">
+      <h2>📚 资料沉淀</h2>
+      <a href="#compare">框架选型 →</a>
+    </div>
+
+    <section class="res-grid">
+      <article class="card card-hover res-card">
+        <span class="ico">📄</span>
+        <h3>必读论文</h3>
+        <p>打好理论基础，理解设计取舍的来由。</p>
+        <ul>
+          <li><b>ReAct</b>推理与行动协同</li>
+          <li><b>Reflexion</b>自我反思机制</li>
+          <li><b>Toolformer</b>工具学习</li>
+          <li><b>MetaGPT</b>多角色协作</li>
+        </ul>
+      </article>
+
+      <article class="card card-hover res-card">
+        <span class="ico">🧰</span>
+        <h3>开源框架</h3>
+        <p>按需要选择，先用起来再谈深浅。</p>
+        <ul>
+          <li><b>LangGraph</b>状态机式编排</li>
+          <li><b>LlamaIndex</b>数据与检索</li>
+          <li><b>AutoGen</b>多 Agent 对话</li>
+          <li><b>CrewAI</b>角色化协作</li>
+        </ul>
+      </article>
+
+      <article class="card card-hover res-card">
+        <span class="ico">🎯</span>
+        <h3>实战项目</h3>
+        <p>能跑起来的项目胜过十篇笔记。</p>
+        <ul>
+          <li><b>AgentFlow</b>编排框架</li>
+          <li><b>rag-toolkit</b>检索工具箱</li>
+          <li><b>token-lens</b>可观测面板</li>
+          <li><b>prompt-lab</b>评测平台</li>
+        </ul>
+      </article>
+
+      <article class="card card-hover res-card">
+        <span class="ico">🎬</span>
+        <h3>教程课程</h3>
+        <p>系统性补齐知识盲区的路径。</p>
+        <ul>
+          <li><b>基础</b>LLM 入门与 Prompt</li>
+          <li><b>进阶</b>Agent 架构设计</li>
+          <li><b>实战</b>端到端项目拆解</li>
+        </ul>
+      </article>
+
+      <article class="card card-hover res-card">
+        <span class="ico">🌐</span>
+        <h3>社区与资讯</h3>
+        <p>保持对生态变化的敏感度。</p>
+        <ul>
+          <li><b>周刊</b>AI 前沿周报</li>
+          <li><b>榜单</b>模型能力评测</li>
+          <li><b>社区</b>开发者讨论区</li>
+        </ul>
+      </article>
+
+      <article class="card card-hover res-card">
+        <span class="ico">🛠️</span>
+        <h3>常用工具</h3>
+        <p>日常开发提效的小工具合集。</p>
+        <ul>
+          <li><b>调试</b>Prompt 对比实验台</li>
+          <li><b>观测</b>调用链追踪面板</li>
+          <li><b>评测</b>回归测试数据集</li>
+        </ul>
+      </article>
+    </section>
+
+    <!-- 框架选型 -->
+    <div class="sec-head" id="compare">
+      <h2>⚖️ 框架选型建议</h2>
+    </div>
+
+    <section class="post-grid">
+      <article class="card card-pad">
+        <div class="tags" style="margin-bottom:10px">
+          <span class="pill pill-primary">编排</span>
+        </div>
+        <h3 style="font-size:15px;font-weight:700;margin-bottom:8px">需要精确控制流程 → 状态机式框架</h3>
+        <p class="prose">当流程有明确节点、分支与重试时，用图结构建模比「让模型自由发挥」可控得多。适合生产环境、需要审计与回溯的场景。</p>
+      </article>
+      <article class="card card-pad">
+        <div class="tags" style="margin-bottom:10px">
+          <span class="pill pill-info">多角色</span>
+        </div>
+        <h3 style="font-size:15px;font-weight:700;margin-bottom:8px">任务可拆解且角色清晰 → 多 Agent 框架</h3>
+        <p class="prose">写作、评审、检索这类可以分角色的任务收益明显；但角色过多会带来上下文开销和不确定性，建议先控制在 2–3 个角色。</p>
+      </article>
+      <article class="card card-pad">
+        <div class="tags" style="margin-bottom:10px">
+          <span class="pill pill-success">轻量</span>
+        </div>
+        <h3 style="font-size:15px;font-weight:700;margin-bottom:8px">需求简单 → 直接调 API</h3>
+        <p class="prose">如果只是固定的几轮调用加工具，手写循环反而更清晰、更好调试。不要为了用框架而用框架。</p>
+      </article>
+      <article class="card card-pad">
+        <div class="tags" style="margin-bottom:10px">
+          <span class="pill pill-warning">提醒</span>
+        </div>
+        <h3 style="font-size:15px;font-weight:700;margin-bottom:8px">先做评测，再谈优化</h3>
+        <p class="prose">没有评测集的优化都是盲调。哪怕只有 30 条样本，也能帮你在换模型、改 Prompt 时判断到底变好了还是变差了。</p>
+      </article>
+    </section>
+
+      <p id="search-empty" class="search-empty">没有匹配的内容，试试别的关键词。</p>
+
+  </main>
+</div>
+
+<footer class="site-foot">
+  <span>© 2026 Jax的AI知识库 · 积硅步 致千里</span>
+  <div class="foot-links">
+    <a href="index.html">返回首页</a>
+    <a href="articles.html">技术文章</a>
+    <a href="interview.html">AI 面试题</a>
+  </div>
+</footer>
+
+<script src="assets/site.js"></script>
+</body>
+</html>

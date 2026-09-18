@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+<script>
+(function(){try{var t=localStorage.getItem('jax-ai-theme');if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t);}catch(e){}})();
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jax的AI知识库 · 首页</title>
+<meta name="description" content="Jax 的 AI 知识库：Agent 智能体学习路线、技术文章、大模型应用开发项目与 AI 面试题">
+<meta property="og:title" content="Jax的AI知识库 · 首页">
+<meta property="og:description" content="Jax 的 AI 知识库：Agent 智能体学习路线、技术文章、大模型应用开发项目与 AI 面试题">
+<meta name="theme-color" content="#0b1026">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Jax的AI知识库">
+<meta property="og:image" content="assets/galaxy-cover.jpg">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/galaxy-cover.jpg">
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+<a class="skip-link" href="#main">跳到主要内容</a>
+
+<div class="layout">
+
+  <!-- ================= 侧栏 ================= -->
+  <aside class="sidebar">
+    <div class="side-card">
+      <div class="brand">
+        <span class="avatar">AI</span>
+        <span class="brand-name">Jax的AI知识库</span>
+        <button class="theme-btn" data-theme-toggle aria-label="切换深浅主题">🌙</button>
+      </div>
+
+      <nav class="nav">
+        <a href="index.html" class="active"><span class="ico">🏠</span>首页</a>
+        <a href="agents.html"><span class="ico">🤖</span>Agent智能体</a>
+        <a href="articles.html"><span class="ico">📄</span>技术文章<span class="cnt">78</span></a>
+        <a href="projects.html"><span class="ico">🚀</span>大模型应用开发项目</a>
+        <a href="interview.html"><span class="ico">🎯</span>AI 面试题<span class="cnt">120</span></a>
+        <a href="about.html"><span class="ico">👋</span>关于Jax</a>
+      </nav>
+
+      <div class="side-search">
+        <span class="s-ico">🔍</span>
+        <label for="sideSearch" class="sr-only">搜索</label>
+        <input id="sideSearch" type="search" placeholder="搜索文章 / 题目…">
+      </div>
+
+      <div class="side-divider"></div>
+      <div class="side-title">热门标签</div>
+      <div class="tag-cloud">
+        <a href="articles.html">#LLM</a><a href="agents.html">#Agent</a>
+        <a href="articles.html">#RAG</a><a href="articles.html">#Prompt</a>
+        <a href="articles.html">#MCP</a><a href="articles.html">#微调</a>
+        <a href="projects.html">#向量库</a><a href="articles.html">#多模态</a>
+      </div>
+
+      <div class="side-divider"></div>
+      <div class="side-title">关于博主</div>
+      <ul class="info-list">
+        <li><span class="ico">📍</span>深圳 · AI 应用工程师</li>
+        <li><span class="ico">⭐</span>大模型落地实践 3 年</li>
+        <li><span class="ico">🐙</span>GitHub 开源项目 12 个</li>
+        <li><span class="ico">📮</span>hi@jax-ai.dev</li>
+      </ul>
+    </div>
+  </aside>
+
+  <!-- ================= 主内容 ================= -->
+  <main class="main" id="main">
+
+    <!-- 封面 -->
+    <section class="cover" aria-label="知识库封面">
+      <img class="cover-img" src="assets/galaxy-cover.jpg" alt="" aria-hidden="true" decoding="async">
+      <div class="cover-inner">
+        <span class="cover-avatar">🤖</span>
+        <div>
+          <div class="cover-name">Jax的AI知识库</div>
+          <div class="cover-motto">积硅步 · 致千里</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 置顶介绍 -->
+    <section class="card card-pad">
+      <div class="post-head">
+        <span class="avatar avatar-lg">AI</span>
+        <div>
+          <div class="post-head-name">Jax</div>
+          <div class="post-head-date">2026 年 09 月 19 日</div>
+        </div>
+        <span class="pin-flag">📌 置顶</span>
+      </div>
+      <div class="prose">
+        <p>你好，我是 Jax 👋 一名专注 <span class="hl">AI 应用落地</span>的工程师。</p>
+        <p>这个知识库分成四块：<strong>Agent 智能体</strong>放开发学习路线与资料沉淀、<strong>技术文章</strong>写不限定方向的思考与避坑、<strong>大模型应用开发项目</strong>记录真实落地实践、<strong>AI 面试题</strong>整理高频考点与参考答案。</p>
+        <p>积硅步，致千里。目前已沉淀 <strong>78 篇</strong>文章、<strong>120 道</strong>面试题。</p>
+      </div>
+      <div class="card-actions">
+        <a href="agents.html" class="btn btn-primary">从 Agent 路线开始 →</a>
+        <a href="#posts" class="btn btn-ghost">看最新文章</a>
+        <span class="like-count">❤️ 1,286</span>
+      </div>
+    </section>
+
+    <!-- 四个板块入口 -->
+    <div class="sec-head">
+      <h2>🧭 知识库导航</h2>
+    </div>
+    <div class="post-grid">
+      <a href="agents.html" class="card card-hover post-card">
+        <div class="post-cover cv-1"><span>🤖</span><span class="pill pill-primary">学习路线</span></div>
+        <div class="post-body">
+          <h3>Agent智能体</h3>
+          <p>从 LLM 基础到多 Agent 协作的五阶段学习路线，配套论文、框架与实战项目清单。</p>
+          <div class="post-foot"><span>5 个阶段</span><span>·</span><span>40+ 资料</span></div>
+        </div>
+      </a>
+      <a href="articles.html" class="card card-hover post-card">
+        <div class="post-cover cv-2"><span>📄</span><span class="pill pill-info">不限方向</span></div>
+        <div class="post-body">
+          <h3>技术文章</h3>
+          <p>按年份与分类归档的全部文章。不针对特定方向，写真正跑通过、能复现的经验。</p>
+          <div class="post-foot"><span>78 篇</span><span>·</span><span>12 个分类</span></div>
+        </div>
+      </a>
+      <a href="projects.html" class="card card-hover post-card">
+        <div class="post-cover cv-3"><span>🚀</span><span class="pill pill-success">实战</span></div>
+        <div class="post-body">
+          <h3>大模型应用开发项目</h3>
+          <p>Agent 编排框架、RAG 工具箱、LLM 可观测面板等真实落地项目的实现与复盘。</p>
+          <div class="post-foot"><span>5 个项目</span><span>·</span><span>全部开源</span></div>
+        </div>
+      </a>
+      <a href="interview.html" class="card card-hover post-card">
+        <div class="post-cover cv-4"><span>🎯</span><span class="pill pill-warning">高频</span></div>
+        <div class="post-body">
+          <h3>AI 面试题</h3>
+          <p>LLM 基础、RAG、Agent、微调部署、系统设计五大类高频题，附参考答案与追问方向。</p>
+          <div class="post-foot"><span>120 道</span><span>·</span><span>持续更新</span></div>
+        </div>
+      </a>
+    </div>
+
+    <!-- 本周精选 -->
+    <div class="sec-head">
+      <h2>🔥 本周精选</h2>
+      <a href="articles.html">查看全部 →</a>
+    </div>
+
+    <article class="card card-hover feature-card">
+      <div class="feature-cover">
+        <span class="emoji">🧠</span>
+        <span class="label">Agent / 深度长文</span>
+      </div>
+      <div class="feature-body">
+        <div class="tags">
+          <span class="pill pill-primary">Agent</span>
+          <span class="pill"><span class="dot d-indigo"></span>架构设计</span>
+        </div>
+        <h3><a href="post.html">从 0 到 1 搭建多 Agent 协作系统：Planner-Executor-Critic 实战</a></h3>
+        <p>拆解任务分发、上下文共享、失败重试的完整工程实现，附三个真实踩坑案例与可复现代码。</p>
+        <div class="post-foot">
+          <span>2026-09-14</span><span>·</span><span>18 min 阅读</span><span>·</span><span>❤️ 532</span>
+        </div>
+      </div>
+    </article>
+
+    <!-- 最新文章 -->
+    <div class="sec-head" id="posts">
+      <h2>📄 最新文章</h2>
+      <a href="articles.html">按时间归档 →</a>
+    </div>
+
+    <div class="post-grid">
+      <article class="card card-hover post-card">
+        <div class="post-cover cv-1"><span>🔎</span></div>
+        <div class="post-body">
+          <div class="tags">
+            <span class="pill"><span class="dot d-green"></span>RAG</span>
+            <span class="pill"><span class="dot d-cyan"></span>检索优化</span>
+          </div>
+          <h3><a href="articles.html">RAG 检索优化实战：混合检索 + 重排序提升 40% 召回率</a></h3>
+          <p>关键词召回与向量召回的融合策略，以及重排序模型在真实业务里的收益边界。</p>
+          <div class="post-foot"><span>09-06</span><span>·</span><span>15 min</span></div>
+        </div>
+      </article>
+      <article class="card card-hover post-card">
+        <div class="post-cover cv-2"><span>📊</span></div>
+        <div class="post-body">
+          <div class="tags">
+            <span class="pill"><span class="dot d-amber"></span>工程实践</span>
+            <span class="pill"><span class="dot d-cyan"></span>可观测性</span>
+          </div>
+          <h3><a href="articles.html">LLM 应用的可观测性：Token 级追踪与成本仪表盘搭建</a></h3>
+          <p>用 OpenTelemetry 构建全链路追踪，让每一次模型调用都可解释、可归因、可优化。</p>
+          <div class="post-foot"><span>09-02</span><span>·</span><span>12 min</span></div>
+        </div>
+      </article>
+      <article class="card card-hover post-card">
+        <div class="post-cover cv-3"><span>🌳</span></div>
+        <div class="post-body">
+          <div class="tags">
+            <span class="pill"><span class="dot d-indigo"></span>LLM</span>
+            <span class="pill"><span class="dot d-rose"></span>选型</span>
+          </div>
+          <h3><a href="articles.html">微调还是 RAG？一张决策树帮你完成技术选型</a></h3>
+          <p>从数据规模、更新频率、成本、延迟四个维度建立决策框架，附 6 个真实场景判断过程。</p>
+          <div class="post-foot"><span>08-26</span><span>·</span><span>15 min</span></div>
+        </div>
+      </article>
+      <article class="card card-hover post-card">
+        <div class="post-cover cv-4"><span>🧩</span></div>
+        <div class="post-body">
+          <div class="tags">
+            <span class="pill"><span class="dot d-rose"></span>MCP</span>
+            <span class="pill"><span class="dot d-amber"></span>避坑指南</span>
+          </div>
+          <h3><a href="articles.html">Function Calling 的十八个坑：MCP 协议实战笔记</a></h3>
+          <p>参数校验、超时控制、幂等设计、错误回传——文档里不会告诉你的那些细节。</p>
+          <div class="post-foot"><span>08-12</span><span>·</span><span>16 min</span></div>
+        </div>
+      </article>
+    </div>
+
+    <!-- 订阅 -->
+    <section class="subscribe">
+      <div>
+        <h3>订阅 AI 前沿周刊</h3>
+        <p>每周一封邮件：精选论文、开源动态，以及一篇最值得读的深度文章。</p>
+      </div>
+      <form>
+        <label for="emailInput" class="sr-only">邮箱地址</label>
+        <input id="emailInput" type="email" placeholder="you@example.com" required>
+        <button type="submit" class="btn btn-white">订阅</button>
+      </form>
+    </section>
+
+      <p id="search-empty" class="search-empty">没有匹配的内容，试试别的关键词。</p>
+
+  </main>
+</div>
+
+<footer class="site-foot">
+  <span>© 2026 Jax的AI知识库 · 积硅步 致千里</span>
+  <div class="foot-links">
+    <a href="articles.html">文章归档</a>
+    <a href="agents.html">Agent 路线</a>
+    <a href="https://github.com/JaxAi888/git_ai" target="_blank" rel="noopener">GitHub</a>
+    <a href="rss.xml">RSS</a>
+  </div>
+</footer>
+
+<script src="assets/site.js"></script>
+</body>
+</html>

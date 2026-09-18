@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+<script>
+(function(){try{var t=localStorage.getItem('jax-ai-theme');if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t);}catch(e){}})();
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>大模型应用开发项目 · Jax的AI知识库</title>
+<meta name="description" content="大模型应用开发项目的实现与复盘：Agent 编排、RAG 工具箱、LLM 可观测性">
+<meta property="og:title" content="大模型应用开发项目 · Jax的AI知识库">
+<meta property="og:description" content="大模型应用开发项目的实现与复盘：Agent 编排、RAG 工具箱、LLM 可观测性">
+<meta name="theme-color" content="#0b1026">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Jax的AI知识库">
+<meta property="og:image" content="assets/galaxy-cover.jpg">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/galaxy-cover.jpg">
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+<a class="skip-link" href="#main">跳到主要内容</a>
+
+<div class="layout">
+
+  <!-- ================= 侧栏 ================= -->
+  <aside class="sidebar">
+    <div class="side-card">
+      <div class="brand">
+        <span class="avatar">AI</span>
+        <span class="brand-name">Jax的AI知识库</span>
+        <button class="theme-btn" data-theme-toggle aria-label="切换深浅主题">🌙</button>
+      </div>
+      <nav class="nav">
+        <a href="index.html"><span class="ico">🏠</span>首页</a>
+        <a href="agents.html"><span class="ico">🤖</span>Agent智能体</a>
+        <a href="articles.html"><span class="ico">📄</span>技术文章<span class="cnt">78</span></a>
+        <a href="projects.html" class="active"><span class="ico">🚀</span>大模型应用开发项目</a>
+        <a href="interview.html"><span class="ico">🎯</span>AI 面试题<span class="cnt">120</span></a>
+        <a href="about.html"><span class="ico">👋</span>关于Jax</a>
+      </nav>
+      <div class="side-search">
+        <span class="s-ico">🔍</span>
+        <label for="sideSearch" class="sr-only">搜索项目</label>
+        <input id="sideSearch" type="search" placeholder="搜索项目…">
+      </div>
+      <div class="side-divider"></div>
+      <div class="side-title">项目状态</div>
+      <ul class="info-list">
+        <li><span class="ico">🟢</span>持续维护 4 个</li>
+        <li><span class="ico">🟡</span>实验性 2 个</li>
+        <li><span class="ico">💎</span>全部开源</li>
+      </ul>
+      <div class="side-divider"></div>
+      <div class="side-title">关于博主</div>
+      <ul class="info-list">
+        <li><span class="ico">📍</span>深圳 · AI 应用工程师</li>
+        <li><span class="ico">🐙</span>GitHub 开源项目 12 个</li>
+        <li><span class="ico">📮</span>hi@jax-ai.dev</li>
+      </ul>
+    </div>
+  </aside>
+
+  <!-- ================= 主内容 ================= -->
+  <main class="main" id="main">
+
+    <section class="page-hero">
+      <span class="eyebrow">🚀 Projects</span>
+      <h1>大模型应用开发项目</h1>
+      <p>学而不用，不如学而用之。这里是我在大模型应用开发方向实践落地的真实项目——每个项目都包含设计取舍、踩坑记录与可复现的实现思路。</p>
+      <div class="hero-stats">
+        <div><b>6</b><span>进行中项目</span></div>
+        <div><b>100%</b><span>开源可跑</span></div>
+        <div><b>4</b><span>生产在用</span></div>
+      </div>
+    </section>
+
+    <!-- 分类筛选 -->
+    <section class="filter-bar" aria-label="项目分类筛选">
+      <button class="filter-pill active" data-filter="all" data-filter-group="pj" aria-pressed="true">全部</button>
+      <button class="filter-pill" data-filter="Agent编排" data-filter-group="pj" aria-pressed="false">Agent 编排</button>
+      <button class="filter-pill" data-filter="RAG检索" data-filter-group="pj" aria-pressed="false">RAG 检索</button>
+      <button class="filter-pill" data-filter="LLM Ops" data-filter-group="pj" aria-pressed="false">LLM Ops</button>
+      <button class="filter-pill" data-filter="工具平台" data-filter-group="pj" aria-pressed="false">工具平台</button>
+      <button class="filter-pill" data-filter="应用产品" data-filter-group="pj" aria-pressed="false">应用产品</button>
+    </section>
+
+    <section class="project-grid">
+
+      <!-- 项目 1 -->
+      <article class="card card-hover project-card" data-cat="Agent编排">
+        <div class="preview">
+          <div class="preview-bar"><i></i><i></i><i></i></div>
+          <div class="preview-body pv-1">
+            <div class="ui-row"><span class="ui-chip">Agent</span><span class="ui-line" style="flex:1"></span></div>
+            <div class="ui-row">
+              <span class="ui-block" style="width:34px;height:34px;border-radius:9px"></span>
+              <div style="flex:1;display:flex;flex-direction:column;gap:6px">
+                <span class="ui-line" style="width:70%"></span>
+                <span class="ui-line" style="width:45%"></span>
+              </div>
+            </div>
+            <div class="ui-fig"><b style="height:40%"></b><b style="height:70%"></b><b style="height:55%"></b><b style="height:88%"></b></div>
+          </div>
+        </div>
+        <div class="project-body">
+          <div class="project-title-row">
+            <a href="https://github.com/JaxAi888" target="_blank" rel="noopener" class="project-title">AgentFlow</a>
+            <span class="tags"><span class="pill pill-primary">💎 源码</span></span>
+          </div>
+          <p class="project-desc">🧠 基于 Planner-Executor-Critic 模式的多 Agent 协作编排框架，支持工具注册、上下文共享与失败重试。</p>
+          <div class="tags" style="margin-top:auto;padding-top:6px">
+            <span class="pill"><span class="dot d-rose"></span>喜爱</span>
+            <span class="pill"><span class="dot d-green"></span>开源</span>
+            <span class="pill"><span class="dot d-amber"></span>产品</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- 项目 2 -->
+      <article class="card card-hover project-card" data-cat="RAG检索">
+        <div class="preview">
+          <div class="preview-bar"><i></i><i></i><i></i></div>
+          <div class="preview-body pv-2">
+            <div class="ui-row"><span class="ui-chip">RAG</span><span class="ui-line" style="flex:1"></span></div>
+            <div class="ui-row">
+              <span class="ui-block" style="width:34px;height:34px;border-radius:9px"></span>
+              <div style="flex:1;display:flex;flex-direction:column;gap:6px">
+                <span class="ui-line" style="width:62%"></span>
+                <span class="ui-line" style="width:80%"></span>
+              </div>
+            </div>
+            <div class="ui-fig"><b style="height:62%"></b><b style="height:34%"></b><b style="height:80%"></b><b style="height:50%"></b></div>
+          </div>
+        </div>
+        <div class="project-body">
+          <div class="project-title-row">
+            <a href="https://github.com/JaxAi888" target="_blank" rel="noopener" class="project-title">rag-toolkit</a>
+            <span class="tags"><span class="pill pill-primary">💎 源码</span></span>
+          </div>
+          <p class="project-desc">🔎 混合检索 + 重排序的 RAG 工程工具箱，内置切分策略对比、召回评测与一键压测脚本。</p>
+          <div class="tags" style="margin-top:auto;padding-top:6px">
+            <span class="pill"><span class="dot d-green"></span>开源</span>
+            <span class="pill"><span class="dot d-amber"></span>产品</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- 项目 3 -->
+      <article class="card card-hover project-card" data-cat="LLM Ops">
+        <div class="preview">
+          <div class="preview-bar"><i></i><i></i><i></i></div>
+          <div class="preview-body pv-3">
+            <div class="ui-row"><span class="ui-chip">LLM Ops</span><span class="ui-line" style="flex:1"></span></div>
+            <div class="ui-fig" style="align-items:center;justify-content:center">
+              <b style="height:30%;flex:none;width:100%;border-radius:6px"></b>
+            </div>
+            <div class="ui-row"><span class="ui-line" style="width:40%"></span><span class="ui-line" style="width:25%"></span></div>
+          </div>
+        </div>
+        <div class="project-body">
+          <div class="project-title-row">
+            <a href="https://github.com/JaxAi888" target="_blank" rel="noopener" class="project-title">token-lens</a>
+            <span class="tags"><span class="pill pill-primary">💎 源码</span></span>
+          </div>
+          <p class="project-desc">📊 LLM 调用全链路可观测面板：Token 级追踪、成本归因、延迟分布，接入 OpenTelemetry。</p>
+          <div class="tags" style="margin-top:auto;padding-top:6px">
+            <span class="pill"><span class="dot d-green"></span>开源</span>
+            <span class="pill"><span class="dot d-cyan"></span>大型</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- 项目 4 -->
+      <article class="card card-hover project-card" data-cat="工具平台">
+        <div class="preview">
+          <div class="preview-bar"><i></i><i></i><i></i></div>
+          <div class="preview-body pv-4">
+            <div class="ui-row"><span class="ui-chip">Prompt</span><span class="ui-line" style="flex:1"></span></div>
+            <div class="ui-row">
+              <span class="ui-block" style="width:34px;height:34px;border-radius:9px"></span>
+              <div style="flex:1;display:flex;flex-direction:column;gap:6px">
+                <span class="ui-line" style="width:75%"></span>
+                <span class="ui-line" style="width:38%"></span>
+              </div>
+            </div>
+            <div class="ui-fig"><b style="height:45%"></b><b style="height:78%"></b><b style="height:60%"></b><b style="height:35%"></b></div>
+          </div>
+        </div>
+        <div class="project-body">
+          <div class="project-title-row">
+            <a href="https://github.com/JaxAi888" target="_blank" rel="noopener" class="project-title">prompt-lab</a>
+            <span class="tags"><span class="pill pill-primary">💎 源码</span></span>
+          </div>
+          <p class="project-desc">🧪 提示词版本管理与 A/B 评测平台，支持数据集回归测试、评分对齐与效果对比报表。</p>
+          <div class="tags" style="margin-top:auto;padding-top:6px">
+            <span class="pill"><span class="dot d-rose"></span>喜爱</span>
+            <span class="pill"><span class="dot d-amber"></span>产品</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- 项目 5 -->
+      <article class="card card-hover project-card" data-cat="RAG检索|应用产品">
+        <div class="preview">
+          <div class="preview-bar"><i></i><i></i><i></i></div>
+          <div class="preview-body pv-5">
+            <div class="ui-row"><span class="ui-chip">Knowledge</span><span class="ui-line" style="flex:1"></span></div>
+            <div class="ui-row">
+              <span class="ui-block" style="width:34px;height:34px;border-radius:9px"></span>
+              <div style="flex:1;display:flex;flex-direction:column;gap:6px">
+                <span class="ui-line" style="width:58%"></span>
+                <span class="ui-line" style="width:72%"></span>
+              </div>
+            </div>
+            <div class="ui-fig"><b style="height:55%"></b><b style="height:40%"></b><b style="height:85%"></b><b style="height:65%"></b></div>
+          </div>
+        </div>
+        <div class="project-body">
+          <div class="project-title-row">
+            <a href="https://github.com/JaxAi888" target="_blank" rel="noopener" class="project-title">kb-assistant</a>
+            <span class="tags"><span class="pill pill-primary">💎 源码</span></span>
+          </div>
+          <p class="project-desc">📚 企业知识库问答系统：多源文档接入、权限过滤、引用溯源与拒答策略的完整实现。</p>
+          <div class="tags" style="margin-top:auto;padding-top:6px">
+            <span class="pill"><span class="dot d-green"></span>开源</span>
+            <span class="pill"><span class="dot d-amber"></span>产品</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- 项目 6 -->
+      <article class="card card-hover project-card" data-cat="应用产品|工具平台">
+        <div class="preview">
+          <div class="preview-bar"><i></i><i></i><i></i></div>
+          <div class="preview-body pv-1">
+            <div class="ui-row"><span class="ui-chip">Docs</span><span class="ui-line" style="flex:1"></span></div>
+            <div class="ui-row">
+              <span class="ui-block" style="width:34px;height:34px;border-radius:9px"></span>
+              <div style="flex:1;display:flex;flex-direction:column;gap:6px">
+                <span class="ui-line" style="width:66%"></span>
+                <span class="ui-line" style="width:44%"></span>
+              </div>
+            </div>
+            <div class="ui-fig"><b style="height:50%"></b><b style="height:74%"></b><b style="height:38%"></b><b style="height:82%"></b></div>
+          </div>
+        </div>
+        <div class="project-body">
+          <div class="project-title-row">
+            <a href="https://github.com/JaxAi888/git_ai" target="_blank" rel="noopener" class="project-title">Jax的AI知识库</a>
+            <span class="tags"><span class="pill pill-primary">💎 源码</span></span>
+          </div>
+          <p class="project-desc">✍️ 你正在浏览的这个知识库本身——纯静态、零依赖、手写设计系统与深浅双主题。积硅步，致千里。</p>
+          <div class="tags" style="margin-top:auto;padding-top:6px">
+            <span class="pill"><span class="dot d-green"></span>开源</span>
+            <span class="pill"><span class="dot d-cyan"></span>设计</span>
+          </div>
+        </div>
+      </article>
+
+    </section>
+
+      <p id="search-empty" class="search-empty">没有匹配的内容，试试别的关键词。</p>
+
+  </main>
+</div>
+
+<footer class="site-foot">
+  <span>© 2026 Jax的AI知识库 · 积硅步 致千里</span>
+  <div class="foot-links">
+    <a href="index.html">返回首页</a>
+    <a href="agents.html">Agent 路线</a>
+    <a href="https://github.com/JaxAi888/git_ai" target="_blank" rel="noopener">GitHub</a>
+  </div>
+</footer>
+
+<script src="assets/site.js"></script>
+</body>
+</html>

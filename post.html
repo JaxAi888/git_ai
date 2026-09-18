@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+<script>
+(function(){try{var t=localStorage.getItem('jax-ai-theme');if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t);}catch(e){}})();
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>从 0 到 1 搭建多 Agent 协作系统：Planner-Executor-Critic 实战 · Jax的AI知识库</title>
+<meta name="description" content="拆解任务分发、上下文共享、失败重试的完整工程实现，附三个真实踩坑案例与可复现代码">
+<meta property="og:title" content="从 0 到 1 搭建多 Agent 协作系统：Planner-Executor-Critic 实战 · Jax的AI知识库">
+<meta property="og:description" content="拆解任务分发、上下文共享、失败重试的完整工程实现，附三个真实踩坑案例与可复现代码">
+<meta name="theme-color" content="#0b1026">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Jax的AI知识库">
+<meta property="og:image" content="assets/galaxy-cover.jpg">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/galaxy-cover.jpg">
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+<a class="skip-link" href="#main">跳到主要内容</a>
+
+<div class="layout">
+
+  <!-- ================= 侧栏 ================= -->
+  <aside class="sidebar">
+    <div class="side-card">
+      <div class="brand">
+        <span class="avatar">AI</span>
+        <span class="brand-name">Jax的AI知识库</span>
+        <button class="theme-btn" data-theme-toggle aria-label="切换深浅主题">🌙</button>
+      </div>
+      <nav class="nav">
+        <a href="index.html"><span class="ico">🏠</span>首页</a>
+        <a href="agents.html"><span class="ico">🤖</span>Agent智能体</a>
+        <a href="articles.html" class="active"><span class="ico">📄</span>技术文章<span class="cnt">78</span></a>
+        <a href="projects.html"><span class="ico">🚀</span>大模型应用开发项目</a>
+        <a href="interview.html"><span class="ico">🎯</span>AI 面试题<span class="cnt">120</span></a>
+        <a href="about.html"><span class="ico">👋</span>关于Jax</a>
+      </nav>
+      <div class="side-search">
+        <span class="s-ico">🔍</span>
+        <label for="sideSearch" class="sr-only">搜索</label>
+        <input id="sideSearch" type="search" placeholder="搜索文章 / 题目…">
+      </div>
+      <div class="side-divider"></div>
+      <div class="side-title">本文信息</div>
+      <ul class="info-list">
+        <li><span class="ico">📅</span>2026-09-14 发布</li>
+        <li><span class="ico">⏱️</span>约 18 min · 6,200 字</li>
+        <li><span class="ico">🗂️</span>分类：Agent / 架构设计</li>
+        <li><span class="ico">❤️</span>532 次收藏</li>
+      </ul>
+      <div class="side-divider"></div>
+      <div class="side-title">座右铭</div>
+      <ul class="info-list">
+        <li><span class="ico">🧭</span>积硅步 · 致千里</li>
+      </ul>
+    </div>
+  </aside>
+
+  <!-- ================= 主内容：正文 + 粘性目录 ================= -->
+  <main class="main" id="main">
+    <div class="post-layout">
+
+      <!-- 正文卡片 -->
+      <article class="card">
+        <div class="art-head">
+          <a class="back-link" href="articles.html">← 返回技术文章</a>
+          <div class="tags" style="margin-bottom:12px">
+            <span class="pill pill-primary">Agent</span>
+            <span class="pill"><span class="dot d-indigo"></span>架构设计</span>
+            <span class="pill"><span class="dot d-cyan"></span>工程实践</span>
+          </div>
+          <h1 class="art-title">从 0 到 1 搭建多 Agent 协作系统：Planner-Executor-Critic 实战</h1>
+          <div class="art-meta">
+            <span class="m"><span class="avatar" style="width:22px;height:22px;font-size:10px">AI</span><b>Jax</b></span>
+            <span class="m">·</span>
+            <span class="m">2026-09-14</span>
+            <span class="m">·</span>
+            <span class="m">⏱️ 18 min 阅读</span>
+            <span class="m">·</span>
+            <span class="m">👁️ 12.4k</span>
+            <span class="m">·</span>
+            <span class="m">❤️ 532</span>
+          </div>
+        </div>
+
+        <div class="cover art-cover" aria-hidden="true">
+          <img class="cover-img" src="assets/galaxy-cover.jpg" alt="" decoding="async">
+        </div>
+
+        <div class="article-body">
+
+          <p>过去半年，我负责把一个「单 Agent 跑通 Demo」的系统推到生产环境。这篇文章记录完整的工程化过程：<strong>任务怎么拆、上下文怎么共享、失败怎么兜底</strong>，以及三个文档里不会写、但上线一定会撞上的坑。</p>
+
+          <h2 id="why">为什么单 Agent 不够用</h2>
+          <p>单 Agent 不是不能做，而是边界很快会到：</p>
+          <ul>
+            <li><strong>上下文窗口爆炸</strong>：工具越多，系统提示词越长，检索类工具再回灌大段文档，窗口很快见底；</li>
+            <li><strong>职责耦合</strong>：规划、执行、检查挤在一个提示词里，模型在不同「人格」间切换，稳定性肉眼可见地下降；</li>
+            <li><strong>无法并行</strong>：三个独立子任务只能串行跑，延迟直接相加。</li>
+          </ul>
+          <p>结论很朴素：<strong>当任务能被拆成「相对独立的子目标」时，多 Agent 才有收益；拆不开就别硬拆。</strong>我用一条判断标准——子任务之间是否需要频繁交换中间结果。交换越少，拆分收益越大。</p>
+
+          <h2 id="arch">整体架构：Planner-Executor-Critic</h2>
+          <p>我们最终采用的三角色架构，是所有变体里最经得住折腾的一版：</p>
+          <ul>
+            <li><strong>Planner</strong>：只做一件事——把目标拆成带验收标准的子任务，输出结构化 DAG；</li>
+            <li><strong>Executor</strong>：领取子任务，带着<strong>裁剪后</strong>的上下文去调用工具，只关心当前节点；</li>
+            <li><strong>Critic</strong>：对着验收标准检查产出，不通过就打回重做（带失败原因），最多重试 N 次。</li>
+          </ul>
+
+          <div class="codeblock">
+            <div class="code-head"><span class="dots"><i></i><i></i><i></i></span><span class="lang">python · 主循环骨架</span></div>
+<pre><span class="tk-kw">class</span> <span class="tk-fn">Orchestrator</span>:
+    <span class="tk-kw">def</span> <span class="tk-fn">run</span>(<span class="tk-op">self</span>, goal: <span class="tk-fn">str</span>) <span class="tk-op">-></span> Result:
+        plan  <span class="tk-op">=</span> <span class="tk-op">self</span>.planner.decompose(goal)      <span class="tk-cm"># ① 拆任务 → DAG</span>
+        state <span class="tk-op">=</span> SharedState(plan)                <span class="tk-cm"># ② 共享黑板</span>
+
+        <span class="tk-kw">for</span> node <span class="tk-kw">in</span> plan.ready_nodes():           <span class="tk-cm"># ③ 只取无依赖节点</span>
+            ctx <span class="tk-op">=</span> state.compact_context(node)      <span class="tk-cm">#    按需裁剪上下文</span>
+            <span class="tk-kw">for</span> attempt <span class="tk-kw">in</span> <span class="tk-fn">range</span>(<span class="tk-num">3</span>):              <span class="tk-cm">#    最多重试 3 次</span>
+                output <span class="tk-op">=</span> <span class="tk-op">self</span>.executor.run(node, ctx)
+                verdict <span class="tk-op">=</span> <span class="tk-op">self</span>.critic.review(node, output)
+                <span class="tk-kw">if</span> verdict.ok:
+                    state.commit(node, output)          <span class="tk-cm"># ④ 落库 + 广播</span>
+                    <span class="tk-kw">break</span>
+                ctx <span class="tk-op">=</span> ctx.append(verdict.feedback)    <span class="tk-cm">#    失败原因回灌</span>
+            <span class="tk-kw">else</span>:
+                <span class="tk-kw">return</span> state.escalate(node)          <span class="tk-cm"># ⑤ 兜底降级</span>
+
+        <span class="tk-kw">return</span> state.final()</pre>
+          </div>
+
+          <div class="callout callout-info">
+            <span class="ico">💡</span>
+            <div><b>关键设计：</b>Planner 拆出的每个子任务都自带「验收标准」字段。Critic 只对照标准打分，<b>不重新理解目标</b>——这让审查环节的误判率降了一个量级。</div>
+          </div>
+
+          <h2 id="split">任务分发：把大目标拆成可验证的小任务</h2>
+          <p>拆任务最大的坑是拆得太碎：碎到每个子任务都失去语义，Executor 反而做不好。我们的经验值是<strong>一个子任务对应一次工具调用 + 一次判断</strong>，再大就继续拆，再小就往上合。</p>
+          <p>Planner 的输出是严格的 JSON（用 function calling 约束，别指望提示词能稳定住格式）：</p>
+
+          <div class="codeblock">
+            <div class="code-head"><span class="dots"><i></i><i></i><i></i></span><span class="lang">json · Planner 输出</span></div>
+<pre>{
+  <span class="tk-str">"nodes"</span>: [
+    {
+      <span class="tk-str">"id"</span>: <span class="tk-str">"search"</span>,
+      <span class="tk-str">"task"</span>: <span class="tk-str">"检索近 90 天相关工单"</span>,
+      <span class="tk-str">"tool"</span>: <span class="tk-str">"ticket_search"</span>,
+      <span class="tk-str">"acceptance"</span>: <span class="tk-str">"返回 ≥ 10 条且均为已关闭状态"</span>,
+      <span class="tk-str">"depends_on"</span>: []
+    },
+    {
+      <span class="tk-str">"id"</span>: <span class="tk-str">"cluster"</span>,
+      <span class="tk-str">"task"</span>: <span class="tk-str">"按根因聚类并输出 Top3"</span>,
+      <span class="tk-str">"tool"</span>: <span class="tk-str">"analyze"</span>,
+      <span class="tk-str">"acceptance"</span>: <span class="tk-str">"Top3 覆盖 ≥ 60% 样本且有人工可读标签"</span>,
+      <span class="tk-str">"depends_on"</span>: [<span class="tk-str">"search"</span>]
+    }
+  ]
+}</pre>
+          </div>
+
+          <h2 id="ctx">上下文共享：三种方案与选型</h2>
+          <p>多 Agent 的本质难题不是调度，是<strong>上下文</strong>。三种常见方案的适用面完全不同：</p>
+          <table>
+            <thead>
+              <tr><th>方案</th><th>原理</th><th>适合</th><th>典型问题</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>共享内存</strong></td><td>所有 Agent 读写同一块黑板</td><td>≤3 个角色、强同步</td><td>写冲突、信息互相污染</td></tr>
+              <tr><td><strong>消息传递</strong></td><td>节点间显式收发消息</td><td>流水线式、链式依赖</td><td>拓扑一复杂就难追踪</td></tr>
+              <tr><td><strong>外部存储</strong></td><td>产出写库，按需检索回灌</td><td>长任务、跨会话</td><td>检索质量决定一切</td></tr>
+            </tbody>
+          </table>
+          <p>我们最后是<strong>混合</strong>的：DAG 状态走共享内存（结构化、可版本化），大块产出（检索结果、长文档）走外部存储，执行时按依赖裁剪回灌。核心就一个函数：<code>compact_context(node)</code>——只带「本节点依赖的产出摘要 + 失败反馈」，其余一律不带。</p>
+
+          <h3 id="ctx-rule">一条铁律：上下文只增不减是慢性死亡</h3>
+          <p>任何「把全部历史塞给下一个 Agent」的写法，都会在两周后变成不可解释的玄学系统。我们的黑板记录里，单节点上下文压缩后<strong>超过 4k token 就会告警</strong>——超限通常说明任务拆分粒度错了，回去重新拆，而不是换个更贵的模型。</p>
+
+          <h2 id="retry">失败重试与兜底</h2>
+          <p>重试不是简单的 for 循环，重点是<strong>把 Critic 的失败原因回灌给 Executor</strong>——不带反馈的重试等于让模型再掷一次骰子：</p>
+          <ul>
+            <li>第 1 次失败：回灌 Critic 的具体不合格项（如「Top3 未覆盖 60% 样本」）；</li>
+            <li>第 2 次失败：降温度 + 换更详细的 few-shot 示例；</li>
+            <li>第 3 次失败：<code>escalate()</code> 兜底——输出「该节点失败 + 已完成部分 + 人工介入建议」，<strong>绝不静默吞掉</strong>。</li>
+          </ul>
+
+          <div class="callout callout-warn">
+            <span class="ico">⚠️</span>
+            <div><b>踩过的雷：</b>早期版本失败三次后自动「编造一个看起来合理的结果」继续往下跑，下游全被污染。生产系统的原则是——<b>宁可部分完成并如实上报，不要伪造完整。</b></div>
+          </div>
+
+          <h2 id="pit">三个真实踩坑</h2>
+
+          <h3 id="pit-1">坑一：上下文爆炸导致「选择性失忆」</h3>
+          <p>现象是 Critic 对着验收标准却「看不见」——因为整段标准被挤到窗口边缘被截断了。教训：<strong>验收标准这类关键信息永远放在上下文末尾</strong>（利用 recency），并且用日志记录每个节点的实际 token 构成，出问题能一眼定位是哪一段撑爆的。</p>
+
+          <h3 id="pit-2">坑二：幻觉工具参数</h3>
+          <p>Executor 会编造不存在的参数名和枚举值，工具层一校验就崩。两层解法：接口侧用 <code>pydantic</code> 严格校验 + 参数错误信息原样回传给模型重试；提示侧在工具描述里写清「非法参数会返回错误对象」。上线后这类失败从 7% 降到 0.3%。</p>
+
+          <h3 id="pit-3">坑三：Planner-Executor 死循环</h3>
+          <p>Critic 打回 → Executor 重做 → 又被打回，隐性死循环。除了 3 次重试上限，还加了一条<strong>熔断</strong>：同一个节点的失败原因如果两次相同，直接升级为「任务拆分问题」交回 Planner 重拆，而不是继续为难 Executor。</p>
+
+          <blockquote>
+            <p>这三个坑的共同点：都在「模型能力」之外，属于纯粹的工程问题。多 Agent 系统的稳定性，八成取决于工程约束，两成才是提示词。</p>
+          </blockquote>
+
+          <h2 id="eval">评测与上线</h2>
+          <p>上线前我们只维护两个评测集，但每项都必须过：</p>
+          <ul>
+            <li><strong>拆解质量</strong>：50 个目标的 Planner 输出，人工标注子任务可执行率（目标 ≥ 92%）；</li>
+            <li><strong>端到端成功率</strong>：100 个真实历史任务回放，全链路无人工干预完成率（目标 ≥ 85%）。</li>
+          </ul>
+          <p>上线后靠可观测性续命：每次模型调用的 token 构成、重试次数、熔断次数全部上报，<strong>多 Agent 系统没有仪表盘等于裸奔</strong>。这套的完整实现我放在了 <a href="projects.html">大模型应用开发项目</a> 里的 agent-orchestrator，欢迎白嫖。</p>
+
+          <hr>
+
+          <p><strong>写在最后：</strong>多 Agent 不是银弹，它只是把「一个复杂的提示词」变成「一组可分别测试、分别约束的小系统」。积硅步，致千里——先把单 Agent 的每一步做可靠，拆开才有意义。</p>
+
+        </div>
+
+        <!-- 上一篇 / 下一篇 -->
+        <div class="pn-grid">
+          <a href="articles.html" class="card card-hover pn-card">
+            <span class="lab">← 上一篇</span>
+            <h4>Function Calling 的十八个坑：MCP 协议实战笔记</h4>
+          </a>
+          <a href="articles.html" class="card card-hover pn-card next">
+            <span class="lab">下一篇 →</span>
+            <h4>RAG 检索优化实战：混合检索 + 重排序提升 40% 召回率</h4>
+          </a>
+        </div>
+      </article>
+
+      <!-- 粘性目录 -->
+      <aside class="card toc-card" aria-label="本文目录">
+        <div class="toc-eyebrow">Table of Contents</div>
+        <nav class="toc">
+          <a href="#why">为什么单 Agent 不够用</a>
+          <a href="#arch">整体架构：P-E-C</a>
+          <a href="#split">任务分发</a>
+          <a href="#ctx">上下文共享与选型</a>
+          <a class="lv3" href="#ctx-rule">一条铁律</a>
+          <a href="#retry">失败重试与兜底</a>
+          <a href="#pit">三个真实踩坑</a>
+          <a class="lv3" href="#pit-1">上下文爆炸</a>
+          <a class="lv3" href="#pit-2">幻觉工具参数</a>
+          <a class="lv3" href="#pit-3">死循环</a>
+          <a href="#eval">评测与上线</a>
+        </nav>
+      </aside>
+
+    </div>
+
+    <!-- 相关阅读 -->
+    <div class="sec-head" style="margin-top:22px">
+      <h2>🔗 相关阅读</h2>
+      <a href="articles.html">查看全部 →</a>
+    </div>
+    <div class="post-grid">
+      <article class="card card-hover post-card">
+        <div class="post-cover cv-2"><span>📊</span></div>
+        <div class="post-body">
+          <div class="tags">
+            <span class="pill"><span class="dot d-amber"></span>工程实践</span>
+            <span class="pill"><span class="dot d-cyan"></span>可观测性</span>
+          </div>
+          <h3><a href="articles.html">LLM 应用的可观测性：Token 级追踪与成本仪表盘搭建</a></h3>
+          <p>文中「没有仪表盘等于裸奔」的完整落地版。</p>
+          <div class="post-foot"><span>09-02</span><span>·</span><span>12 min</span></div>
+        </div>
+      </article>
+      <article class="card card-hover post-card">
+        <div class="post-cover cv-4"><span>🧩</span></div>
+        <div class="post-body">
+          <div class="tags">
+            <span class="pill"><span class="dot d-rose"></span>MCP</span>
+            <span class="pill"><span class="dot d-amber"></span>避坑指南</span>
+          </div>
+          <h3><a href="articles.html">Function Calling 的十八个坑：MCP 协议实战笔记</a></h3>
+          <p>坑二「幻觉工具参数」的十八个兄弟。</p>
+          <div class="post-foot"><span>08-12</span><span>·</span><span>16 min</span></div>
+        </div>
+      </article>
+      <article class="card card-hover post-card">
+        <div class="post-cover cv-3"><span>🌳</span></div>
+        <div class="post-body">
+          <div class="tags">
+            <span class="pill"><span class="dot d-indigo"></span>LLM</span>
+            <span class="pill"><span class="dot d-rose"></span>选型</span>
+          </div>
+          <h3><a href="articles.html">微调还是 RAG？一张决策树帮你完成技术选型</a></h3>
+          <p>拆任务之外，另一类「要不要拆」的决策框架。</p>
+          <div class="post-foot"><span>08-26</span><span>·</span><span>15 min</span></div>
+        </div>
+      </article>
+    </div>
+
+      <p id="search-empty" class="search-empty">没有匹配的内容，试试别的关键词。</p>
+
+  </main>
+</div>
+
+<footer class="site-foot">
+  <span>© 2026 Jax的AI知识库 · 积硅步 致千里</span>
+  <div class="foot-links">
+    <a href="index.html">返回首页</a>
+    <a href="articles.html">文章归档</a>
+    <a href="agents.html">Agent 路线</a>
+    <a href="rss.xml">RSS</a>
+  </div>
+</footer>
+
+<script src="assets/site.js"></script>
+</body>
+</html>

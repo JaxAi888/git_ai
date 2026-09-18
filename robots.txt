@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://jaxai888.github.io/git_ai/sitemap.xml

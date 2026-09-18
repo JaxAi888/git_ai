@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+<script>
+(function(){try{var t=localStorage.getItem('jax-ai-theme');if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t);}catch(e){}})();
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>技术文章 · Jax的AI知识库</title>
+<meta name="description" content="按年份与分类归档的全部技术文章，不针对特定方向">
+<meta property="og:title" content="技术文章 · Jax的AI知识库">
+<meta property="og:description" content="按年份与分类归档的全部技术文章，不针对特定方向">
+<meta name="theme-color" content="#0b1026">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Jax的AI知识库">
+<meta property="og:image" content="assets/galaxy-cover.jpg">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/galaxy-cover.jpg">
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+<a class="skip-link" href="#main">跳到主要内容</a>
+
+<div class="layout">
+
+  <!-- ================= 侧栏 ================= -->
+  <aside class="sidebar">
+    <div class="side-card">
+      <div class="brand">
+        <span class="avatar">AI</span>
+        <span class="brand-name">Jax的AI知识库</span>
+        <button class="theme-btn" data-theme-toggle aria-label="切换深浅主题">🌙</button>
+      </div>
+      <nav class="nav">
+        <a href="index.html"><span class="ico">🏠</span>首页</a>
+        <a href="agents.html"><span class="ico">🤖</span>Agent智能体</a>
+        <a href="articles.html" class="active"><span class="ico">📄</span>技术文章<span class="cnt">78</span></a>
+        <a href="projects.html"><span class="ico">🚀</span>大模型应用开发项目</a>
+        <a href="interview.html"><span class="ico">🎯</span>AI 面试题<span class="cnt">120</span></a>
+        <a href="about.html"><span class="ico">👋</span>关于Jax</a>
+      </nav>
+      <div class="side-search">
+        <span class="s-ico">🔍</span>
+        <label for="sideSearch" class="sr-only">搜索文章</label>
+        <input id="sideSearch" type="search" placeholder="搜索文章…">
+      </div>
+      <div class="side-divider"></div>
+      <div class="side-title">订阅</div>
+      <ul class="info-list">
+        <li><span class="ico">📮</span>RSS 全文订阅</li>
+        <li><span class="ico">✉️</span>每周 AI 周刊</li>
+      </ul>
+      <div class="side-divider"></div>
+      <div class="side-title">关于博主</div>
+      <ul class="info-list">
+        <li><span class="ico">📍</span>深圳 · AI 应用工程师</li>
+        <li><span class="ico">⭐</span>大模型落地实践 3 年</li>
+        <li><span class="ico">🐙</span>GitHub 开源项目 12 个</li>
+        <li><span class="ico">📮</span>hi@jax-ai.dev</li>
+      </ul>
+    </div>
+  </aside>
+
+  <!-- ================= 主内容 ================= -->
+  <main class="main" id="main">
+
+    <!-- 分类筛选 -->
+    <section class="filter-bar" aria-label="文章分类筛选">
+      <button class="filter-pill active" data-filter="all" data-filter-group="art" aria-pressed="true">全部</button>
+      <button class="filter-pill" data-filter="大模型基础" data-filter-group="art" aria-pressed="false">大模型基础</button>
+      <button class="filter-pill" data-filter="论文精读" data-filter-group="art" aria-pressed="false">论文精读</button>
+      <button class="filter-pill" data-filter="Prompt工程" data-filter-group="art" aria-pressed="false">Prompt 工程</button>
+      <button class="filter-pill" data-filter="RAG检索" data-filter-group="art" aria-pressed="false">RAG 检索</button>
+      <button class="filter-pill" data-filter="Agent开发" data-filter-group="art" aria-pressed="false">Agent 开发</button>
+      <button class="filter-pill" data-filter="模型微调" data-filter-group="art" aria-pressed="false">模型微调</button>
+      <button class="filter-pill" data-filter="推理部署" data-filter-group="art" aria-pressed="false">推理部署</button>
+      <button class="filter-pill" data-filter="AI工程化" data-filter-group="art" aria-pressed="false">AI 工程化</button>
+      <button class="filter-pill" data-filter="工具链" data-filter-group="art" aria-pressed="false">工具链</button>
+      <button class="filter-pill" data-filter="产品思考" data-filter-group="art" aria-pressed="false">产品思考</button>
+      <button class="filter-pill" data-filter="单篇" data-filter-group="art" aria-pressed="false">单篇</button>
+    </section>
+
+    <!-- ===== 2026 ===== -->
+    <section class="year-block" data-year-block>
+      <div class="year-head">
+        <span class="y">2026</span>
+        <span class="ring" aria-hidden="true"></span>
+        <span class="count">19 文章</span>
+      </div>
+      <div class="entry-list">
+
+        <a href="post.html" class="entry" data-cat="Agent开发|AI工程化">
+          <span class="entry-date">09-14</span>
+          <span class="entry-node"><i></i></span>
+          <span class="entry-title">从 0 到 1 搭建多 Agent 协作系统：Planner-Executor-Critic 实战</span>
+          <span class="entry-right"><span class="pill">Agent 开发</span><span class="entry-mark"></span></span>
+        </a>
+
+        <a href="post.html" class="entry" data-cat="RAG检索">
+          <span class="entry-date">09-06</span>
+          <span class="entry-node"><i></i></span>
+          <span class="entry-title">RAG 检索优化实战：混合检索 + 重排序提升 40% 召回率</span>
+          <span class="entry-right"><span class="pill">RAG 检索</span><span class="entry-mark"></span></span>
+        </a>
+
+        <a href="post.html" class="entry" data-cat="AI工程化">
+          <span class="entry-date">09-02</span>
+          <span class="entry-node"><i></i></span>
+          <span class="entry-title">LLM 应用的可观测性：Token 级追踪与成本仪表盘搭建</span>
+          <span class="entry-right"><span class="pill">AI 工程化</span><span class="entry-mark"></span></span>
+        </a>
+
+        <a href="post.html" class="entry" data-cat="模型微调|RAG检索">
+          <span class="entry-date">08-26</span>
+          <span class="entry-node"><i></i></span>
+          <span class="entry-title">微调还是 RAG？一张决策树帮你完成技术选型</span>
+          <span class="entry-right"><span class="pill">模型微调</span><span class="entry-mark"></span></span>
+        </a>
+
+        <a href="post.html" class="entry" data-cat="Agent开发|工具链">
+          <span class="entry-date">08-12</span>
+          <span class="entry-node"><i></i></span>
+          <span class="entry-title">Function Calling 的十八个坑：MCP 协议实战笔记</span>
+          <span class="entry-right"><span class="pill">Agent 开发</span><span class="entry-mark"></span></span>
+        </a>
+
+        <a href="post.html" class="entry" data-cat="AI工程化|Prompt工程">
+          <span class="entry-date">03-12</span>
+          <span class="entry-node"><i></i></span>
+          <span class="entry-title">用 9 个调试技巧定位 LLM 应用的诡异输出</span>
+          <span class="entry-right"><span class="pill">AI 工程化</span><span class="entry-mark"></span></span>
+        </a>
+
+        <a href="post.html" class="entry" data-cat="产品思考">
+          <span class="entry-date">03-11</span>
+          <span class="entry-node"><i></i></span>
+          <span class="entry-title">AI 时代工程师的能力重构：3 个不变的原则</span>
+          <span class="entry-right"><span class="pill">产品思考</span><span class="entry-mark"></span></span>
+        </a>
+
+        <a href="post.html" class="entry" data-cat="论文精读">
+          <span class="entry-date">03-10</span>
+          <span class="entry-node"><i></i></span>
+          <span class="entry-title">来自 Transformer 之父的 7 个启示</span>
+          <span class="entry-right"><span class="pill">论文精读</span><span class="entry-mark"></span></span>
+        </a>
+
+        <a href="post.html" class="entry" data-cat="产品思考|大模型基础">
+          <span class="entry-date">03-09</span>
+          <span class="entry-node"><i></i></span>
+          <span class="entry-title">2026 年入行 AI 应用开发，应该学什么？</span>
+          <span class="entry-right"><span class="pill">产品思考</span><span class="entry-mark"></span></span>
+        </a>
+
+        <a href="post.html" class="entry" data-cat="Agent开发">
+          <span class="entry-date">03-03</span>
+          <span class="entry-node"><i></i></span>
+          <span class="entry-title">写给自学的同学：从 API 调用到系统设计的完整路径</span>
+          <span class="entry-right"><span class="pill">Agent 开发</span><span class="entry-mark"></span></span>
+        </a>
+
+        <a href="post.html" class="entry" data-cat="工具链">
+          <span class="entry-date">02-26</span>
+          <span class="entry-node"><i></i></span>
+          <span class="entry-title">100 秒带你看懂 MCP 为什么这么火</span>
+          <span class="entry-right"><span class="pill">工具链</span><span class="entry-mark"></span></span>
+        </a>
+
+        <a href="post.html" class="entry" data-cat="RAG检索">
+          <span class="entry-date">02-25</span>
+          <span class="entry-node"><i></i></span>
+          <span class="entry-title">2026 年 RAG 技术栈的 3 大趋势</span>
+          <span class="entry-right"><span class="pill">RAG 检索</span><span class="entry-mark"></span></span>
+        </a>
+
+        <a href="post.html" class="entry" data-cat="Prompt工程">
+          <span class="entry-date">02-04</span>
+          <span class="entry-node"><i></i></span>
+          <span class="entry-title">我没想到 Prompt 里的 few-shot 能有这么强</span>
+          <span class="entry-right"><span class="pill">Prompt 工程</span><span class="entry-mark"></span></span>
+        </a>
+
+        <a href="post.html" class="entry" data-cat="模型微调">
+          <span class="entry-date">02-03</span>
+          <span class="entry-node"><i></i></span>
+          <span class="entry-title">2026 年的微调，已经不是你以为的那个微调了</span>
+          <span class="entry-right"><span class="pill">模型微调</span><span class="entry-mark"></span></span>
+        </a>
+
+        <a href="post.html" class="entry" data-cat="RAG检索|AI工程化">
+          <span class="entry-date">02-02</span>
+          <span class="entry-node"><i></i></span>
+          <span class="entry-title">向量数据库水深，你把持不住</span>
+          <span class="entry-right"><span class="pill">RAG 检索</span><span class="entry-mark"></span></span>
+        </a>
+
+        <a href="post.html" class="entry" data-cat="推理部署">
+          <span class="entry-date">01-29</span>
+          <span class="entry-node"><i></i></span>
+          <span class="entry-title">推理优化 10 年经验：吞吐提升 300% 的 10 大核心策略</span>
+          <span class="entry-right"><span class="pill">推理部署</span><span class="entry-mark"></span></span>
+        </a>
+
+        <a href="post.html" class="entry" data-cat="Agent开发|论文精读">
+          <span class="entry-date">01-28</span>
+          <span class="entry-node"><i></i></span>
+          <span class="entry-title">Agent 设计模式：从 ReAct 到多智能体协作</span>
+          <span class="entry-right"><span class="pill">Agent 开发</span><span class="entry-mark"></span></span>
+        </a>
+
+        <a href="post.html" class="entry" data-cat="RAG检索|大模型基础">
+          <span class="entry-date">01-27</span>
+          <span class="entry-node"><i></i></span>
+          <span class="entry-title">1 分钟讲清 RAG 让回答准确率提升 10 倍的原理</span>
+          <span class="entry-right"><span class="pill">RAG 检索</span><span class="entry-mark"></span></span>
+        </a>
+
+        <a href="post.html" class="entry" data-cat="大模型基础">
+          <span class="entry-date">01-20</span>
+          <span class="entry-node"><i></i></span>
+          <span class="entry-title">上下文窗口：越长越好吗？长文本的代价与取舍</span>
+          <span class="entry-right"><span class="pill">大模型基础</span><span class="entry-mark"></span></span>
+        </a>
+
+      </div>
+    </section>
+
+    <!-- ===== 2025 ===== -->
+    <section class="year-block" data-year-block>
+      <div class="year-head">
+        <span class="y">2025</span>
+        <span class="ring" aria-hidden="true"></span>
+        <span class="count">10 文章</span>
+      </div>
+      <div class="entry-list">
+
+        <a href="post.html" class="entry" data-cat="大模型基础">
+          <span class="entry-date">12-18</span>
+          <span class="entry-node"><i></i></span>
+          <span class="entry-title">Transformer 的注意力机制到底在看什么</span>
+          <span class="entry-right"><span class="pill">大模型基础</span><span class="entry-mark"></span></span>
+        </a>
+
+        <a href="post.html" class="entry" data-cat="Agent开发">
+          <span class="entry-date">11-05</span>
+          <span class="entry-node"><i></i></span>
+          <span class="entry-title">从零实现一个最小可用的 Agent（附完整代码）</span>
+          <span class="entry-right"><span class="pill">Agent 开发</span><span class="entry-mark"></span></span>
+        </a>
+
+        <a href="post.html" class="entry" data-cat="大模型基础">
+          <span class="entry-date">10-21</span>
+          <span class="entry-node"><i></i></span>
+          <span class="entry-title">开源模型横评：能力、成本与适用场景</span>
+          <span class="entry-right"><span class="pill">大模型基础</span><span class="entry-mark"></span></span>
+        </a>
+
+        <a href="post.html" class="entry" data-cat="Prompt工程|AI工程化">
+          <span class="entry-date">09-30</span>
+          <span class="entry-node"><i></i></span>
+          <span class="entry-title">提示词注入攻击与防御清单</span>
+          <span class="entry-right"><span class="pill">Prompt 工程</span><span class="entry-mark"></span></span>
+        </a>
+
+        <a href="post.html" class="entry" data-cat="模型微调">
+          <span class="entry-date">08-14</span>
+          <span class="entry-node"><i></i></span>
+          <span class="entry-title">LoRA 微调实操：从数据准备到效果评估</span>
+          <span class="entry-right"><span class="pill">模型微调</span><span class="entry-mark"></span></span>
+        </a>
+
+        <a href="post.html" class="entry" data-cat="推理部署|AI工程化">
+          <span class="entry-date">07-02</span>
+          <span class="entry-node"><i></i></span>
+          <span class="entry-title">大模型推理成本优化的五条路径</span>
+          <span class="entry-right"><span class="pill">推理部署</span><span class="entry-mark"></span></span>
+        </a>
+
+        <a href="post.html" class="entry" data-cat="大模型基础">
+          <span class="entry-date">06-19</span>
+          <span class="entry-node"><i></i></span>
+          <span class="entry-title">多模态模型的能力边界在哪里</span>
+          <span class="entry-right"><span class="pill">大模型基础</span><span class="entry-mark"></span></span>
+        </a>
+
+        <a href="post.html" class="entry" data-cat="RAG检索">
+          <span class="entry-date">05-08</span>
+          <span class="entry-node"><i></i></span>
+          <span class="entry-title">向量检索召回率的评测方法论</span>
+          <span class="entry-right"><span class="pill">RAG 检索</span><span class="entry-mark"></span></span>
+        </a>
+
+        <a href="post.html" class="entry" data-cat="产品思考">
+          <span class="entry-date">03-22</span>
+          <span class="entry-node"><i></i></span>
+          <span class="entry-title">做 AI 产品必须懂的 10 个技术概念</span>
+          <span class="entry-right"><span class="pill">产品思考</span><span class="entry-mark"></span></span>
+        </a>
+
+        <a href="post.html" class="entry" data-cat="工具链">
+          <span class="entry-date">02-11</span>
+          <span class="entry-node"><i></i></span>
+          <span class="entry-title">AI 工程化工具链全景图</span>
+          <span class="entry-right"><span class="pill">工具链</span><span class="entry-mark"></span></span>
+        </a>
+
+      </div>
+    </section>
+
+    <!-- ===== 2024 ===== -->
+    <section class="year-block" data-year-block>
+      <div class="year-head">
+        <span class="y">2024</span>
+        <span class="ring" aria-hidden="true"></span>
+        <span class="count">6 文章</span>
+      </div>
+      <div class="entry-list">
+
+        <a href="post.html" class="entry" data-cat="AI工程化">
+          <span class="entry-date">12-05</span>
+          <span class="entry-node"><i></i></span>
+          <span class="entry-title">从论文到生产：一个模型的落地全流程</span>
+          <span class="entry-right"><span class="pill">AI 工程化</span><span class="entry-mark"></span></span>
+        </a>
+
+        <a href="post.html" class="entry" data-cat="大模型基础">
+          <span class="entry-date">10-16</span>
+          <span class="entry-node"><i></i></span>
+          <span class="entry-title">初识大模型：Token、温度与采样策略</span>
+          <span class="entry-right"><span class="pill">大模型基础</span><span class="entry-mark"></span></span>
+        </a>
+
+        <a href="post.html" class="entry" data-cat="Prompt工程">
+          <span class="entry-date">09-09</span>
+          <span class="entry-node"><i></i></span>
+          <span class="entry-title">为什么你的 Prompt 总是不稳定</span>
+          <span class="entry-right"><span class="pill">Prompt 工程</span><span class="entry-mark"></span></span>
+        </a>
+
+        <a href="post.html" class="entry" data-cat="单篇">
+          <span class="entry-date">07-21</span>
+          <span class="entry-node"><i></i></span>
+          <span class="entry-title">静态博客搭建与设计系统实践</span>
+          <span class="entry-right"><span class="pill">单篇</span><span class="entry-mark"></span></span>
+        </a>
+
+        <a href="post.html" class="entry" data-cat="产品思考">
+          <span class="entry-date">05-30</span>
+          <span class="entry-node"><i></i></span>
+          <span class="entry-title">我的 AI 学习路径回顾：走过的弯路与留下的方法</span>
+          <span class="entry-right"><span class="pill">产品思考</span><span class="entry-mark"></span></span>
+        </a>
+
+        <a href="post.html" class="entry" data-cat="大模型基础">
+          <span class="entry-date">03-14</span>
+          <span class="entry-node"><i></i></span>
+          <span class="entry-title">第一次调用 API：从 Hello World 开始</span>
+          <span class="entry-right"><span class="pill">大模型基础</span><span class="entry-mark"></span></span>
+        </a>
+
+      </div>
+    </section>
+
+      <p id="search-empty" class="search-empty">没有匹配的内容，试试别的关键词。</p>
+
+  </main>
+</div>
+
+<footer class="site-foot">
+  <span>© 2026 Jax的AI知识库 · 积硅步 致千里</span>
+  <div class="foot-links">
+    <a href="index.html">返回首页</a>
+    <a href="agents.html">Agent 路线</a>
+    <a href="rss.xml">RSS</a>
+  </div>
+</footer>
+
+<script src="assets/site.js"></script>
+</body>
+</html>

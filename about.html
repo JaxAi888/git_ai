@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+<script>
+(function(){try{var t=localStorage.getItem('jax-ai-theme');if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t);}catch(e){}})();
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>关于Jax · Jax的AI知识库</title>
+<meta name="description" content="关于 Jax：AI 应用工程师，专注大模型落地实践">
+<meta property="og:title" content="关于Jax · Jax的AI知识库">
+<meta property="og:description" content="关于 Jax：AI 应用工程师，专注大模型落地实践">
+<meta name="theme-color" content="#0b1026">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Jax的AI知识库">
+<meta property="og:image" content="assets/galaxy-cover.jpg">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/galaxy-cover.jpg">
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+<a class="skip-link" href="#main">跳到主要内容</a>
+
+<div class="layout">
+
+  <!-- ================= 侧栏 ================= -->
+  <aside class="sidebar">
+    <div class="side-card">
+      <div class="brand">
+        <span class="avatar">AI</span>
+        <span class="brand-name">Jax的AI知识库</span>
+        <button class="theme-btn" data-theme-toggle aria-label="切换深浅主题">🌙</button>
+      </div>
+      <nav class="nav">
+        <a href="index.html"><span class="ico">🏠</span>首页</a>
+        <a href="agents.html"><span class="ico">🤖</span>Agent智能体</a>
+        <a href="articles.html"><span class="ico">📄</span>技术文章<span class="cnt">78</span></a>
+        <a href="projects.html"><span class="ico">🚀</span>大模型应用开发项目</a>
+        <a href="interview.html"><span class="ico">🎯</span>AI 面试题<span class="cnt">120</span></a>
+        <a href="about.html" class="active"><span class="ico">👋</span>关于Jax</a>
+      </nav>
+      <div class="side-search">
+        <span class="s-ico">🔍</span>
+        <label for="sideSearch" class="sr-only">搜索</label>
+        <input id="sideSearch" type="search" placeholder="搜索…">
+      </div>
+      <div class="side-divider"></div>
+      <div class="side-title">本页目录</div>
+      <ul class="info-list">
+        <li><span class="ico">🙋</span><a href="#me">关于我</a></li>
+        <li><span class="ico">🛠️</span><a href="#skills">技能栈</a></li>
+        <li><span class="ico">🕒</span><a href="#timeline">经历</a></li>
+        <li><span class="ico">📮</span><a href="#contact">联系我</a></li>
+      </ul>
+      <div class="side-divider"></div>
+      <div class="side-title">座右铭</div>
+      <ul class="info-list">
+        <li><span class="ico">🧭</span>积硅步 · 致千里</li>
+      </ul>
+    </div>
+  </aside>
+
+  <!-- ================= 主内容 ================= -->
+  <main class="main" id="main">
+
+    <!-- 银河横幅 -->
+    <section class="cover cover--sm" aria-label="关于页横幅">
+      <img class="cover-img" src="assets/galaxy-cover.jpg" alt="" aria-hidden="true" decoding="async">
+      <div class="cover-inner">
+        <span class="cover-avatar">👋</span>
+        <div>
+          <div class="cover-name">关于 Jax</div>
+          <div class="cover-motto">积硅步 · 致千里</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 个人简介 -->
+    <section class="card" id="me">
+      <div class="profile">
+        <div class="profile-avatar">Jax</div>
+        <div class="profile-main">
+          <h1>你好，我是 Jax 👋</h1>
+          <div class="role">AI 应用工程师 · 大模型落地实践者</div>
+          <p>目前在一线做 AI 应用落地，主要方向是 Agent 系统设计、RAG 检索优化与 LLM 工程化。喜欢把复杂问题拆成可验证的小步骤，也喜欢把踩过的坑写下来变成别人能直接用的经验。</p>
+          <p>这个站点是我的个人知识库，分四块：Agent 学习路线、技术文章、大模型应用开发项目、AI 面试题。不求全，只求每一条都是自己验证过的。</p>
+          <div class="tags" style="margin-top:6px">
+            <span class="pill pill-primary">Agent</span>
+            <span class="pill pill-info">RAG</span>
+            <span class="pill pill-success">LLM 工程化</span>
+            <span class="pill">全栈开发</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 技能栈 -->
+    <div class="sec-head" id="skills">
+      <h2>🛠️ 技能栈</h2>
+    </div>
+    <section class="skill-grid">
+      <article class="card skill-card">
+        <h3>🧠 大模型应用</h3>
+        <div class="skill-tags">
+          <span class="pill">Prompt 工程</span>
+          <span class="pill">RAG</span>
+          <span class="pill">Function Calling</span>
+          <span class="pill">MCP</span>
+          <span class="pill">多 Agent 编排</span>
+        </div>
+      </article>
+      <article class="card skill-card">
+        <h3>⚙️ 工程与部署</h3>
+        <div class="skill-tags">
+          <span class="pill">Python</span>
+          <span class="pill">FastAPI</span>
+          <span class="pill">vLLM</span>
+          <span class="pill">Docker</span>
+          <span class="pill">CI/CD</span>
+        </div>
+      </article>
+      <article class="card skill-card">
+        <h3>🔍 检索与数据</h3>
+        <div class="skill-tags">
+          <span class="pill">向量数据库</span>
+          <span class="pill">混合检索</span>
+          <span class="pill">重排序</span>
+          <span class="pill">数据清洗</span>
+        </div>
+      </article>
+      <article class="card skill-card">
+        <h3>📊 评测与观测</h3>
+        <div class="skill-tags">
+          <span class="pill">评测集构建</span>
+          <span class="pill">OpenTelemetry</span>
+          <span class="pill">成本分析</span>
+          <span class="pill">A/B 实验</span>
+        </div>
+      </article>
+      <article class="card skill-card">
+        <h3>🎨 前端与设计</h3>
+        <div class="skill-tags">
+          <span class="pill">TypeScript</span>
+          <span class="pill">React</span>
+          <span class="pill">CSS 设计系统</span>
+          <span class="pill">可访问性</span>
+        </div>
+      </article>
+      <article class="card skill-card">
+        <h3>🌱 正在学习</h3>
+        <div class="skill-tags">
+          <span class="pill">推理优化</span>
+          <span class="pill">小模型微调</span>
+          <span class="pill">多模态应用</span>
+        </div>
+      </article>
+    </section>
+
+    <!-- 经历时间线 -->
+    <div class="sec-head" id="timeline">
+      <h2>🕒 经历与里程碑</h2>
+    </div>
+    <section class="card card-pad">
+      <div class="timeline">
+        <div class="tl-item">
+          <span class="tl-year">2026</span>
+          <span class="tl-node"><i></i></span>
+          <div class="tl-body">
+            <h4>搭建个人 AI 知识库</h4>
+            <p>把三年的实践沉淀成体系化的路线、文章与题库，开始持续更新。</p>
+          </div>
+        </div>
+        <div class="tl-item">
+          <span class="tl-year">2025</span>
+          <span class="tl-node"><i></i></span>
+          <div class="tl-body">
+            <h4>多 Agent 系统落地</h4>
+            <p>负责多 Agent 协作系统的架构设计与上线，负责编排、评测与可观测性建设。</p>
+          </div>
+        </div>
+        <div class="tl-item">
+          <span class="tl-year">2024</span>
+          <span class="tl-node"><i></i></span>
+          <div class="tl-body">
+            <h4>转向 AI 应用开发</h4>
+            <p>从传统后端转向大模型应用，完成首个企业知识库问答系统从 0 到 1。</p>
+          </div>
+        </div>
+        <div class="tl-item">
+          <span class="tl-year">2023</span>
+          <span class="tl-node"><i></i></span>
+          <div class="tl-body">
+            <h4>开始系统学习大模型</h4>
+            <p>从 API 调用到论文精读，逐步建立对 Transformer 与 Agent 的系统理解。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 联系方式 -->
+    <div class="sec-head" id="contact">
+      <h2>📮 联系我</h2>
+    </div>
+    <section class="contact-grid">
+      <a href="mailto:hi@jax-ai.dev" class="card card-hover contact-card"><span class="ico">✉️</span>hi@jax-ai.dev</a>
+      <a href="https://github.com/JaxAi888/git_ai" target="_blank" rel="noopener" class="card card-hover contact-card"><span class="ico">🐙</span>GitHub</a>
+      <a href="articles.html" class="card card-hover contact-card"><span class="ico">📝</span>技术文章</a>
+      <a href="rss.xml" class="card card-hover contact-card"><span class="ico">📡</span>RSS 订阅</a>
+      <a href="about.html#contact" class="card card-hover contact-card"><span class="ico">💬</span>留言板</a>
+      <a href="about.html#contact" class="card card-hover contact-card"><span class="ico">🔗</span>关于本站</a>
+    </section>
+
+    <section class="subscribe">
+      <div>
+        <h3>有问题想交流？</h3>
+        <p>欢迎邮件或留言，关于 Agent、RAG 与工程化的问题都乐意聊。</p>
+      </div>
+      <form>
+        <label for="msgInput" class="sr-only">想说的话</label>
+        <input id="msgInput" type="text" placeholder="一句话留言…" required>
+        <button type="submit" class="btn btn-white">发送</button>
+      </form>
+    </section>
+
+      <p id="search-empty" class="search-empty">没有匹配的内容，试试别的关键词。</p>
+
+  </main>
+</div>
+
+<footer class="site-foot">
+  <span>© 2026 Jax的AI知识库 · 积硅步 致千里</span>
+  <div class="foot-links">
+    <a href="index.html">返回首页</a>
+    <a href="articles.html">技术文章</a>
+    <a href="rss.xml">RSS</a>
+  </div>
+</footer>
+
+<script src="assets/site.js"></script>
+</body>
+</html>

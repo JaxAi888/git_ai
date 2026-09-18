@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+<script>
+(function(){try{var t=localStorage.getItem('jax-ai-theme');if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t);}catch(e){}})();
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 面试题 · Jax的AI知识库</title>
+<meta name="description" content="AI 应用开发高频面试题：LLM 基础、RAG、Agent、微调部署、系统设计">
+<meta property="og:title" content="AI 面试题 · Jax的AI知识库">
+<meta property="og:description" content="AI 应用开发高频面试题：LLM 基础、RAG、Agent、微调部署、系统设计">
+<meta name="theme-color" content="#0b1026">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Jax的AI知识库">
+<meta property="og:image" content="assets/galaxy-cover.jpg">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/galaxy-cover.jpg">
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+<a class="skip-link" href="#main">跳到主要内容</a>
+
+<div class="layout">
+
+  <!-- ================= 侧栏 ================= -->
+  <aside class="sidebar">
+    <div class="side-card">
+      <div class="brand">
+        <span class="avatar">AI</span>
+        <span class="brand-name">Jax的AI知识库</span>
+        <button class="theme-btn" data-theme-toggle aria-label="切换深浅主题">🌙</button>
+      </div>
+      <nav class="nav">
+        <a href="index.html"><span class="ico">🏠</span>首页</a>
+        <a href="agents.html"><span class="ico">🤖</span>Agent智能体</a>
+        <a href="articles.html"><span class="ico">📄</span>技术文章<span class="cnt">78</span></a>
+        <a href="projects.html"><span class="ico">🚀</span>大模型应用开发项目</a>
+        <a href="interview.html" class="active"><span class="ico">🎯</span>AI 面试题<span class="cnt">120</span></a>
+        <a href="about.html"><span class="ico">👋</span>关于Jax</a>
+      </nav>
+      <div class="side-search">
+        <span class="s-ico">🔍</span>
+        <label for="sideSearch" class="sr-only">搜索题目</label>
+        <input id="sideSearch" type="search" placeholder="搜索题目…">
+      </div>
+      <div class="side-divider"></div>
+      <div class="side-title">难度说明</div>
+      <ul class="info-list">
+        <li><span class="ico">🟢</span>基础：必须答得出来</li>
+        <li><span class="ico">🟡</span>进阶：能拉开差距</li>
+        <li><span class="ico">🔴</span>高阶：考察深度与视野</li>
+      </ul>
+      <div class="side-divider"></div>
+      <div class="side-title">关于博主</div>
+      <ul class="info-list">
+        <li><span class="ico">📍</span>深圳 · AI 应用工程师</li>
+        <li><span class="ico">🎯</span>已整理 120 道高频题</li>
+        <li><span class="ico">📮</span>hi@jax-ai.dev</li>
+      </ul>
+    </div>
+  </aside>
+
+  <!-- ================= 主内容 ================= -->
+  <main class="main" id="main">
+
+    <section class="page-hero">
+      <span class="eyebrow">🎯 Interview</span>
+      <h1>AI 面试题</h1>
+      <p>面向 AI 应用开发岗位的高频面试题整理。每道题除了参考答案，还标注了面试官可能的追问方向——点击题目即可展开。</p>
+      <div class="hero-stats">
+        <div><b>120</b><span>题目总数</span></div>
+        <div><b>9</b><span>分类</span></div>
+        <div><b>持续</b><span>更新中</span></div>
+      </div>
+    </section>
+
+    <!-- 分类筛选 -->
+    <section class="filter-bar" aria-label="题目分类筛选">
+      <button class="filter-pill active" data-filter="all" data-filter-group="q" aria-pressed="true">全部</button>
+      <button class="filter-pill" data-filter="大模型基础" data-filter-group="q" aria-pressed="false">大模型基础</button>
+      <button class="filter-pill" data-filter="Transformer" data-filter-group="q" aria-pressed="false">Transformer</button>
+      <button class="filter-pill" data-filter="Prompt工程" data-filter-group="q" aria-pressed="false">Prompt 工程</button>
+      <button class="filter-pill" data-filter="RAG" data-filter-group="q" aria-pressed="false">RAG</button>
+      <button class="filter-pill" data-filter="Agent" data-filter-group="q" aria-pressed="false">Agent</button>
+      <button class="filter-pill" data-filter="微调与部署" data-filter-group="q" aria-pressed="false">微调与部署</button>
+      <button class="filter-pill" data-filter="系统设计" data-filter-group="q" aria-pressed="false">系统设计</button>
+      <button class="filter-pill" data-filter="场景开放题" data-filter-group="q" aria-pressed="false">场景开放题</button>
+    </section>
+
+    <div class="sec-head">
+      <h2>📌 高频必问</h2>
+      <a href="interview.html">题目持续更新 →</a>
+    </div>
+
+    <section class="q-list">
+
+      <details class="card q-card" data-cat="大模型基础" open>
+        <summary>
+          <span class="q-num">Q1</span>
+          什么是 Token？为什么同样的中文内容，Token 数差别很大？
+          <span class="q-tags"><span class="pill pill-success">基础</span></span>
+        </summary>
+        <div class="q-body">
+          <p><strong>参考答案：</strong>Token 是模型处理文本的最小单位，由分词器（Tokenizer）通过 BPE 等算法切分得到，并不等于「字」或「词」。一个中文汉字通常占 1–2 个 Token，英文常见单词约 1 个 Token。</p>
+          <p>Token 数差异大的原因主要有三：</p>
+          <ul>
+            <li>分词器词表覆盖度不同——词表里没有的词汇会被拆成多个子词</li>
+            <li>标点、空格、特殊符号、代码片段往往分词效率低</li>
+            <li>不同模型的训练语料结构不同（中文语料占比高的模型，中文分词更紧凑）</li>
+          </ul>
+          <p><strong>追问方向：</strong>上下文窗口与 Token 成本如何换算？如何为长文档场景做 Token 预算？</p>
+        </div>
+      </details>
+
+      <details class="card q-card" data-cat="Transformer">
+        <summary>
+          <span class="q-num">Q2</span>
+          自注意力的计算复杂度是多少？工程上如何优化长序列？
+          <span class="q-tags"><span class="pill pill-warning">进阶</span></span>
+        </summary>
+        <div class="q-body">
+          <p><strong>参考答案：</strong>标准自注意力的时间与显存复杂度都是 O(n²d)（n 为序列长度，d 为维度），这是长上下文的主要瓶颈。</p>
+          <p>常见优化路径：</p>
+          <ul>
+            <li>稀疏/滑窗注意力，只计算局部或关键位置</li>
+            <li>FlashAttention 等 IO 感知实现，降低显存访问开销</li>
+            <li>KV Cache 复用与量化，减少增量推理的重复计算</li>
+            <li>线性注意力、状态空间模型等替代结构</li>
+          </ul>
+          <p><strong>追问方向：</strong>KV Cache 为什么会成为显存瓶颈？PagedAttention 解决了什么问题？</p>
+        </div>
+      </details>
+
+      <details class="card q-card" data-cat="大模型基础">
+        <summary>
+          <span class="q-num">Q3</span>
+          Temperature、Top-p、Top-k 分别控制什么？线上服务怎么设置？
+          <span class="q-tags"><span class="pill pill-success">基础</span></span>
+        </summary>
+        <div class="q-body">
+          <p><strong>参考答案：</strong>三者都作用于解码阶段的采样分布。Temperature 缩放 logits 调节整体随机性；Top-k 只保留概率最高的 k 个候选；Top-p 保留累计概率达到 p 的最小候选集合。</p>
+          <p>实践经验：需要稳定输出的抽取、分类、工具调用场景，温度调到 0–0.2，并优先用结构化输出约束；创意写作可放宽到 0.7–1.0。Top-k 与 Top-p 一般只调一个，同时打开容易互相干扰。</p>
+          <p><strong>追问方向：</strong>温度设为 0 是否就一定可复现？还有哪些因素会造成结果不一致？</p>
+        </div>
+      </details>
+
+      <details class="card q-card" data-cat="Prompt工程">
+        <summary>
+          <span class="q-num">Q4</span>
+          如何减少大模型的幻觉？有哪些工程手段？
+          <span class="q-tags"><span class="pill pill-warning">进阶</span></span>
+        </summary>
+        <div class="q-body">
+          <p><strong>参考答案：</strong>可以从四层入手：</p>
+          <ul>
+            <li><strong>输入层：</strong>用 RAG 提供可靠上下文，并明确要求「仅依据给定资料回答」</li>
+            <li><strong>提示层：</strong>要求先引用原文再给结论，允许回答「资料中没有提及」</li>
+            <li><strong>解码层：</strong>降低温度、限制输出格式、要求结构化字段</li>
+            <li><strong>校验层：</strong>加一道一致性检查或小模型复核，关键结论做事实核对</li>
+          </ul>
+          <p><strong>追问方向：</strong>如果检索到的资料本身就是错的，怎么办？</p>
+        </div>
+      </details>
+
+      <details class="card q-card" data-cat="RAG">
+        <summary>
+          <span class="q-num">Q5</span>
+          描述一个完整的 RAG 链路，并说明每个环节常见的失效点
+          <span class="q-tags"><span class="pill pill-warning">进阶</span></span>
+        </summary>
+        <div class="q-body">
+          <p><strong>参考答案：</strong>链路为「文档解析 → 切分 → 向量化 → 存储 → 检索 → 重排序 → 拼装上下文 → 生成」。</p>
+          <ul>
+            <li>解析：表格、扫描件、多栏排版容易丢结构</li>
+            <li>切分：块太大引入噪声，太小丢失上下文，建议按语义或标题切分并加重叠</li>
+            <li>向量化：领域术语与缩写表达不佳，可考虑混合检索补足</li>
+            <li>检索：只用向量会漏掉精确关键词，建议 BM25 + 向量混合</li>
+            <li>重排序：候选多时用 Cross-Encoder 精排，收益明显但要注意延迟</li>
+            <li>生成：上下文过长会被稀释，需要控制在有效区间</li>
+          </ul>
+          <p><strong>追问方向：</strong>如何量化评估 RAG 效果？召回率和答案准确率是什么关系？</p>
+        </div>
+      </details>
+
+      <details class="card q-card" data-cat="RAG">
+        <summary>
+          <span class="q-num">Q6</span>
+          向量数据库怎么选？什么场景其实不需要它？
+          <span class="q-tags"><span class="pill pill-success">基础</span></span>
+        </summary>
+        <div class="q-body">
+          <p><strong>参考答案：</strong>选型主要看数据规模、并发、运维成本与是否需要混合检索。</p>
+          <ul>
+            <li>数据量在几十万条以内、已有 PostgreSQL，直接用 pgvector 最省事</li>
+            <li>需要高性能与水平扩展，选专用向量库（Milvus、Qdrant 等）</li>
+            <li>需要复杂过滤与事务，优先考虑支持标量过滤的方案</li>
+          </ul>
+          <p>不需要向量库的场景：候选集只有几百条时，关键词检索加规则过滤往往更快更准；纯结构化查询用 SQL 更合适。</p>
+          <p><strong>追问方向：</strong>HNSW 与 IVF 索引的取舍是什么？</p>
+        </div>
+      </details>
+
+      <details class="card q-card" data-cat="Agent">
+        <summary>
+          <span class="q-num">Q7</span>
+          Agent 与普通 LLM 应用的本质区别是什么？
+          <span class="q-tags"><span class="pill pill-success">基础</span></span>
+        </summary>
+        <div class="q-body">
+          <p><strong>参考答案：</strong>普通应用是「一次输入 → 一次输出」的静态链路；Agent 引入了<strong>自主决策循环</strong>——模型根据目标决定下一步做什么、调用哪个工具、要不要继续，直到任务完成或触发终止条件。</p>
+          <p>关键组成：LLM（决策核心）、工具（行动能力）、记忆（状态延续）、规划（任务分解）与终止条件。</p>
+          <p><strong>追问方向：</strong>如何避免 Agent 陷入死循环？预算与步数上限怎么设计？</p>
+        </div>
+      </details>
+
+      <details class="card q-card" data-cat="Agent">
+        <summary>
+          <span class="q-num">Q8</span>
+          多 Agent 协作有哪些常见模式？什么时候不该用多 Agent？
+          <span class="q-tags"><span class="pill" style="color:#b91c1c">高阶</span></span>
+        </summary>
+        <div class="q-body">
+          <p><strong>参考答案：</strong>常见模式包括：</p>
+          <ul>
+            <li><strong>Planner-Executor</strong>：一个负责拆解，一个负责执行</li>
+            <li><strong>Critic/Reviewer</strong>：增加评审角色，提升输出质量</li>
+            <li><strong>Router</strong>：按意图分发到不同专家 Agent</li>
+            <li><strong>Debate</strong>：多角色讨论后收敛结论</li>
+          </ul>
+          <p>不该用的场景：任务本身是线性的、状态简单；或者延迟与成本敏感。多 Agent 会显著增加 Token 消耗与不确定性，很多时候单 Agent 加更好的工具就够了。</p>
+          <p><strong>追问方向：</strong>多 Agent 之间如何共享上下文而不炸掉窗口？</p>
+        </div>
+      </details>
+
+      <details class="card q-card" data-cat="微调与部署">
+        <summary>
+          <span class="q-num">Q9</span>
+          什么情况下应该微调，而不是用 RAG 或 Prompt？
+          <span class="q-tags"><span class="pill pill-warning">进阶</span></span>
+        </summary>
+        <div class="q-body">
+          <p><strong>参考答案：</strong>按需求性质判断：</p>
+          <ul>
+            <li>缺<strong>知识</strong>（模型不知道某事实）→ RAG，知识可更新、可追溯</li>
+            <li>缺<strong>格式与风格</strong>（输出不符合规范）→ 先改 Prompt，仍不稳定再微调</li>
+            <li>需要<strong>固定行为模式</strong>、降低提示词长度、压缩成本 → 微调更合适</li>
+            <li>需要<strong>极致延迟或数据不出域</strong> → 微调小模型自部署</li>
+          </ul>
+          <p><strong>追问方向：</strong>LoRA 与全参微调的取舍？数据量多少才值得微调？</p>
+        </div>
+      </details>
+
+      <details class="card q-card" data-cat="微调与部署">
+        <summary>
+          <span class="q-num">Q10</span>
+          线上推理的吞吐和延迟如何优化？
+          <span class="q-tags"><span class="pill pill-warning">进阶</span></span>
+        </summary>
+        <div class="q-body">
+          <p><strong>参考答案：</strong>从三个层面下手：</p>
+          <ul>
+            <li><strong>调度层：</strong>连续批处理（Continuous Batching）提升 GPU 利用率，PagedAttention 减少显存碎片</li>
+            <li><strong>模型层：</strong>量化（INT8/INT4）、蒸馏、投机解码</li>
+            <li><strong>业务层：</strong>结果缓存、按难度分流到不同规格模型、流式输出改善首字延迟体感</li>
+          </ul>
+          <p>衡量指标要同时看首 Token 延迟（TTFT）与每 Token 输出时间（TPOT），只优化吞吐可能让单请求变慢。</p>
+        </div>
+      </details>
+
+      <details class="card q-card" data-cat="系统设计">
+        <summary>
+          <span class="q-num">Q11</span>
+          设计一个企业知识库问答系统，你会怎么拆？
+          <span class="q-tags"><span class="pill" style="color:#b91c1c">高阶</span></span>
+        </summary>
+        <div class="q-body">
+          <p><strong>参考答案：</strong>按四层拆：</p>
+          <ul>
+            <li><strong>数据层</strong>：多源接入（文档库、Wiki、工单），解析清洗、权限标注、增量更新</li>
+            <li><strong>检索层</strong>：混合检索 + 重排序，按用户权限过滤，缓存高频问题</li>
+            <li><strong>生成层</strong>：上下文拼装、引用标注、拒答策略、多轮改写</li>
+            <li><strong>运营层</strong>：评测集与回归、badcase 归集、成本与延迟监控、灰度发布</li>
+          </ul>
+          <p>要点：权限必须贯穿到检索阶段，而不是生成后再过滤；没有评测集的系统无法迭代。</p>
+          <p><strong>追问方向：</strong>如何做增量更新而不重建全量索引？</p>
+        </div>
+      </details>
+
+      <details class="card q-card" data-cat="系统设计">
+        <summary>
+          <span class="q-num">Q12</span>
+          Token 成本突然翻了三倍，你会怎么排查？
+          <span class="q-tags"><span class="pill pill-warning">进阶</span></span>
+        </summary>
+        <div class="q-body">
+          <p><strong>参考答案：</strong>建立 Token 级追踪后按维度下钻：</p>
+          <ul>
+            <li>按接口/场景拆：是某个新功能带来的，还是全量上涨</li>
+            <li>按环节拆：输入 Token 涨（上下文变长/重复注入）还是输出涨（回答变啰嗦/循环调用）</li>
+            <li>按模型拆：是否发生了模型路由变更或降级回退</li>
+            <li>按调用次数拆：是否出现重试风暴、Agent 步数失控</li>
+          </ul>
+          <p>常见根因：Prompt 模板膨胀、历史对话未做裁剪、检索块数变更、缓存失效。</p>
+        </div>
+      </details>
+
+      <details class="card q-card" data-cat="场景开放题">
+        <summary>
+          <span class="q-num">Q13</span>
+          业务方要求「一周内上线一个 AI 客服」，你怎么推进？
+          <span class="q-tags"><span class="pill" style="color:#b91c1c">高阶</span></span>
+        </summary>
+        <div class="q-body">
+          <p><strong>参考答案：</strong>先对齐范围再谈技术。</p>
+          <ul>
+            <li><strong>定边界</strong>：只做高频问题的自动应答，复杂问题转人工，明确成功率目标</li>
+            <li><strong>拿数据</strong>：从历史工单里抽出 100–200 条真实问题，作为评测集与知识来源</li>
+            <li><strong>搭最小闭环</strong>：RAG + 拒答策略 + 转人工兜底，先保证不出错</li>
+            <li><strong>建度量</strong>：准确率、转人工率、用户反馈，一周内跑通数据回流</li>
+            <li><strong>渐进放量</strong>：先小流量灰度，badcase 归集后再优化</li>
+          </ul>
+          <p>关键判断：宁可答不出，也不要答错——客服场景的错误成本远高于拒答。</p>
+        </div>
+      </details>
+
+    </section>
+
+    <section class="subscribe">
+      <div>
+        <h3>面试题持续更新中</h3>
+        <p>订阅后可第一时间收到新增题目与解析，目前每周新增 5–8 道。</p>
+      </div>
+      <form>
+        <label for="emailInput" class="sr-only">邮箱地址</label>
+        <input id="emailInput" type="email" placeholder="you@example.com" required>
+        <button type="submit" class="btn btn-white">订阅</button>
+      </form>
+    </section>
+
+      <p id="search-empty" class="search-empty">没有匹配的内容，试试别的关键词。</p>
+
+  </main>
+</div>
+
+<footer class="site-foot">
+  <span>© 2026 Jax的AI知识库 · 积硅步 致千里</span>
+  <div class="foot-links">
+    <a href="index.html">返回首页</a>
+    <a href="agents.html">Agent 路线</a>
+    <a href="articles.html">技术文章</a>
+  </div>
+</footer>
+
+<script src="assets/site.js"></script>
+</body>
+</html>

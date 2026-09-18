@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title>Jax的AI知识库</title>
+    <link>https://jaxai888.github.io/git_ai/</link>
+    <description>Agent 智能体学习路线、技术文章、大模型应用开发项目与 AI 面试题</description>
+    <language>zh-cn</language>
+    <item>
+      <title>从 0 到 1 搭建多 Agent 协作系统：Planner-Executor-Critic 实战</title>
+      <link>https://jaxai888.github.io/git_ai/post.html</link>
+      <guid>https://jaxai888.github.io/git_ai/post.html</guid>
+      <pubDate>Mon, 14 Sep 2026 00:00:00 +0000</pubDate>
+      <description>拆解任务分发、上下文共享、失败重试的完整工程实现。</description>
+    </item>
+  </channel>
+</rss>
